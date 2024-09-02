@@ -5,11 +5,13 @@ import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import HomeScreen from "./index";
 import SettingsScreen from "./settings";
 import EmotionsScreen from "./emotions";
+import FoodScreen from "./food";
 
 type TabParamList = {
   Home: undefined;
   Settings: undefined;
   Emotions: undefined;
+  Food: undefined;
 };
 
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -33,6 +35,19 @@ export default function TabNavigator() {
       <Tab.Screen
         name="Emotions"
         component={EmotionsScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Food"
+        component={FoodScreen}
         options={{
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
