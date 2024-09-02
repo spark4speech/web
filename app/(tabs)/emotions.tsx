@@ -17,140 +17,136 @@ const emotions = [
     url: "https://cloud-68ucrctoz-hack-club-bot.vercel.app/0smiling-face-with-smiling-eyes_1f60a.png",
   },
   {
-    name: "Happiness",
-    url: "https://cloud-4ncyrflso-hack-club-bot.vercel.app/0image-17.png",
+    name: "Happy",
+    url: "/assets/imgs/emotions/happy.png",
   },
   {
-    name: "Sadness",
-    url: "https://cloud-5qsbvedf6-hack-club-bot.vercel.app/0image-18.png",
+    name: "Sad",
+    url: "/assets/imgs/emotions/sad.png",
   },
   {
-    name: "Anger",
-    url: "https://cloud-fwl5lt6w1-hack-club-bot.vercel.app/0image-19.png",
+    name: "Angry",
+    url: "/assets/imgs/emotions/angry.png",
   },
   {
-    name: "Fear",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    name: "Scared",
+    url: "/assets/imgs/emotions/scared.png",
   },
   {
     name: "Love",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    url: "/assets/imgs/emotions/love.png",
   },
   {
     name: "Joy",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    url: "/assets/imgs/emotions/joy.png",
   },
   {
-    name: "Surprise",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    name: "Surprised",
+    url: "/assets/imgs/emotions/surprised.png",
   },
   {
     name: "Disgust",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    url: "/assets/imgs/emotions/disgust.png",
   },
   {
     name: "Anticipation",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    url: "/assets/imgs/emotions/anticipation.png",
   },
   {
-    name: "Anxiety",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    name: "Anxious",
+    url: "/assets/imgs/emotions/anxious.png",
   },
   {
-    name: "Frustration",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    name: "Frustrated",
+    url: "/assets/imgs/emotions/frustrated.png",
   },
   {
-    name: "Excitement",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    name: "Excited",
+    url: "/assets/imgs/emotions/excited.png",
   },
   {
-    name: "Shame",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    name: "Disappointed",
+    url: "/assets/imgs/emotions/disappointed.png",
   },
   {
-    name: "Embarrassment",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    name: "Embarrassed",
+    url: "/assets/imgs/emotions/embarrassed.png",
   },
   {
-    name: "Contentment",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    name: "Worried",
+    url: "/assets/imgs/emotions/worried.png",
   },
   {
-    name: "Loneliness",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    name: "Content",
+    url: "/assets/imgs/emotions/content.png",
   },
   {
-    name: "Jealousy",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    name: "Lonely",
+    url: "/assets/imgs/emotions/lonely.png",
+  },
+  {
+    name: "Jealous",
+    url: "/assets/imgs/emotions/jealous.png",
   },
   {
     name: "Compassion",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    url: "/assets/imgs/emotions/compassion.png",
   },
   {
-    name: "Gratitude",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    name: "Grateful",
+    url: "/assets/imgs/emotions/grateful.png",
   },
   {
-    name: "Hopelessness",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    name: "Pain",
+    url: "/assets/imgs/emotions/pain.png",
   },
   {
     name: "Relief",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
-  },
-  {
-    name: "Awe",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
-  },
-  {
-    name: "Confusion",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
-  },
-  {
-    name: "Curiosity",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
-  },
-  {
-    name: "Sleepy",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
-  },
-  {
-    name: "Sick",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
-  },
-  {
-    name: "Hurt",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    url: "/assets/imgs/emotions/relief.png",
   },
   {
     name: "Confused",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    url: "/assets/imgs/emotions/confused.png",
+  },
+  {
+    name: "Thinking",
+    url: "/assets/imgs/emotions/thinking.png",
+  },
+  {
+    name: "Sleepy",
+    url: "/assets/imgs/emotions/sleepy.png",
+  },
+  {
+    name: "Sick",
+    url: "/assets/imgs/emotions/sick.png",
+  },
+  {
+    name: "Hurt",
+    url: "/assets/imgs/emotions/hurt.png",
   },
   {
     name: "Sorrow",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    url: "/assets/imgs/emotions/sorrow.png",
   },
   {
     name: "Annoyed",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    url: "/assets/imgs/emotions/annoyed.png",
   },
   {
     name: "Hot",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    url: "/assets/imgs/emotions/hot.png",
   },
   {
     name: "Cold",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    url: "/assets/imgs/emotions/cold.png",
   },
   {
     name: "Hungry",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    url: "/assets/imgs/emotions/hungry.png",
   },
   {
     name: "Silly",
-    url: "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg",
+    url: "/assets/imgs/emotions/silly.png",
   },
 ];
 
