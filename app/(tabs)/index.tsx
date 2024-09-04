@@ -8,20 +8,28 @@ import {
   ScrollView,
 } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
-import { TabParamList } from "@/app/(tabs)/_layout";
+import { TabParamList, TabParamListValues } from "@/app/(tabs)/_layout";
 import { Alert, Modal, Pressable } from "react-native";
 
-const ICON_URL =
-  "https://static.vecteezy.com/system/resources/previews/000/365/820/original/question-mark-vector-icon.jpg";
+const DEFAULT_ICON = "https://cloud-nhes44ias-hack-club-bot.vercel.app/0qm.jpg";
+
+const PAGE_ICONS: { [key: string]: string } = {
+  Emotions:
+    "https://cloud-68ucrctoz-hack-club-bot.vercel.app/0smiling-face-with-smiling-eyes_1f60a.png",
+  Food: "https://cloud-6ukpbirpk-hack-club-bot.vercel.app/0hamburger-emoji-1024x891-ircy4ojs.png",
+};
 
 const IndexScreen = () => {
   const navigation = useNavigation<NavigationProp<TabParamList>>();
 
   const [modalVisible, setModalVisible] = useState(false);
 
-  const handlePress = () => {
-    navigation.navigate("Emotions");
+  const handlePress = (destination: keyof TabParamList) => {
+    navigation.navigate(destination);
   };
+
+  const tabKeys = Object.keys(TabParamListValues).slice(1);
+  const defaultItemsCount = 72 - tabKeys.length;
 
   return (
     <View style={styles.container}>
@@ -68,7 +76,7 @@ const IndexScreen = () => {
             );
           }}
         >
-          <Text style={styles.buttonText}>Vocab</Text>
+          <Text style={styles.buttonText}>Settings</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
@@ -80,21 +88,40 @@ const IndexScreen = () => {
 
       {/* Grid of Icons */}
       <ScrollView contentContainerStyle={styles.gridContainer}>
-        <TouchableOpacity style={styles.gridItem} onPress={handlePress}>
-          <Image
-            source={{
-              uri: "https://cloud-68ucrctoz-hack-club-bot.vercel.app/0smiling-face-with-smiling-eyes_1f60a.png",
-            }}
-            style={styles.icon}
-          />
-          <Text style={styles.iconText}>Emotions</Text>
-        </TouchableOpacity>
-
-        {Array.from({ length: 71 }).map((_, index) => (
-          <View key={index} style={styles.gridItem}>
-            <Image source={{ uri: ICON_URL }} style={styles.icon} />
-            <Text style={styles.iconText}>Word #{index + 2}</Text>
-          </View>
+        {Object.keys(TabParamListValues)
+          .slice(1)
+          .map((key) => (
+            <TouchableOpacity
+              key={key}
+              style={styles.gridItem}
+              onPress={() =>
+                handlePress(
+                  TabParamListValues[
+                    Number(key) as number
+                  ] as keyof TabParamList
+                )
+              }
+            >
+              <Image
+                source={{
+                  uri: PAGE_ICONS[TabParamListValues[Number(key) as number]],
+                }}
+                style={styles.icon}
+              />
+              <Text style={styles.iconText}>
+                {TabParamListValues[Number(key) as number]}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        {Array.from({ length: defaultItemsCount }).map((_, index) => (
+          <TouchableOpacity
+            key={`default-${index}`}
+            style={styles.gridItem}
+            onPress={() => handlePress("Home" as keyof TabParamList)}
+          >
+            <Image source={{ uri: DEFAULT_ICON }} style={styles.icon} />
+            <Text style={styles.iconText}>?</Text>
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </View>

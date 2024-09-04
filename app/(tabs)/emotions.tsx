@@ -10,145 +10,7 @@ import {
 import * as Speech from "expo-speech";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { TabParamList } from "@/app/(tabs)/_layout";
-
-const emotions = [
-  {
-    name: "Emotions",
-    url: "https://cloud-68ucrctoz-hack-club-bot.vercel.app/0smiling-face-with-smiling-eyes_1f60a.png",
-  },
-  {
-    name: "Happy",
-    url: "/assets/imgs/emotions/happy.png",
-  },
-  {
-    name: "Sad",
-    url: "/assets/imgs/emotions/sad.png",
-  },
-  {
-    name: "Angry",
-    url: "/assets/imgs/emotions/angry.png",
-  },
-  {
-    name: "Scared",
-    url: "/assets/imgs/emotions/scared.png",
-  },
-  {
-    name: "Love",
-    url: "/assets/imgs/emotions/love.png",
-  },
-  {
-    name: "Joy",
-    url: "/assets/imgs/emotions/joy.png",
-  },
-  {
-    name: "Surprised",
-    url: "/assets/imgs/emotions/surprised.png",
-  },
-  {
-    name: "Disgust",
-    url: "/assets/imgs/emotions/disgust.png",
-  },
-  {
-    name: "Anticipation",
-    url: "/assets/imgs/emotions/anticipation.png",
-  },
-  {
-    name: "Anxious",
-    url: "/assets/imgs/emotions/anxious.png",
-  },
-  {
-    name: "Frustrated",
-    url: "/assets/imgs/emotions/frustrated.png",
-  },
-  {
-    name: "Excited",
-    url: "/assets/imgs/emotions/excited.png",
-  },
-  {
-    name: "Disappointed",
-    url: "/assets/imgs/emotions/disappointed.png",
-  },
-  {
-    name: "Embarrassed",
-    url: "/assets/imgs/emotions/embarrassed.png",
-  },
-  {
-    name: "Worried",
-    url: "/assets/imgs/emotions/worried.png",
-  },
-  {
-    name: "Content",
-    url: "/assets/imgs/emotions/content.png",
-  },
-  {
-    name: "Lonely",
-    url: "/assets/imgs/emotions/lonely.png",
-  },
-  {
-    name: "Jealous",
-    url: "/assets/imgs/emotions/jealous.png",
-  },
-  {
-    name: "Compassion",
-    url: "/assets/imgs/emotions/compassion.png",
-  },
-  {
-    name: "Grateful",
-    url: "/assets/imgs/emotions/grateful.png",
-  },
-  {
-    name: "Pain",
-    url: "/assets/imgs/emotions/pain.png",
-  },
-  {
-    name: "Relief",
-    url: "/assets/imgs/emotions/relief.png",
-  },
-  {
-    name: "Confused",
-    url: "/assets/imgs/emotions/confused.png",
-  },
-  {
-    name: "Thinking",
-    url: "/assets/imgs/emotions/thinking.png",
-  },
-  {
-    name: "Sleepy",
-    url: "/assets/imgs/emotions/sleepy.png",
-  },
-  {
-    name: "Sick",
-    url: "/assets/imgs/emotions/sick.png",
-  },
-  {
-    name: "Hurt",
-    url: "/assets/imgs/emotions/hurt.png",
-  },
-  {
-    name: "Sorrow",
-    url: "/assets/imgs/emotions/sorrow.png",
-  },
-  {
-    name: "Annoyed",
-    url: "/assets/imgs/emotions/annoyed.png",
-  },
-  {
-    name: "Hot",
-    url: "/assets/imgs/emotions/hot.png",
-  },
-  {
-    name: "Cold",
-    url: "/assets/imgs/emotions/cold.png",
-  },
-  {
-    name: "Hungry",
-    url: "/assets/imgs/emotions/hungry.png",
-  },
-  {
-    name: "Silly",
-    url: "/assets/imgs/emotions/silly.png",
-  },
-];
+import { emotions } from "@/constants/assets/emotions";
 
 const EmotionsScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
@@ -172,8 +34,11 @@ const EmotionsScreen = () => {
 
       {/* Blue Bar with Buttons */}
       <View style={styles.blueBar}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Vocab</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigator.navigate("Settings")}
+        >
+          <Text style={styles.buttonText}>Settings</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
@@ -191,12 +56,12 @@ const EmotionsScreen = () => {
             <View key={index} style={styles.gridItem}>
               {index % 2 === 0 && index % 24 < 12 && emotion ? (
                 <TouchableOpacity onPress={() => handlePress(emotion.name)}>
-                  <Image source={{ uri: emotion.url }} style={styles.icon} />
+                  <Image source={emotion.url} style={styles.icon} />
                   <Text style={styles.iconText}>{emotion.name}</Text>
                 </TouchableOpacity>
               ) : index % 2 === 1 && index % 24 > 11 && emotion ? (
                 <TouchableOpacity onPress={() => handlePress(emotion.name)}>
-                  <Image source={{ uri: emotion.url }} style={styles.icon} />
+                  <Image source={emotion.url} style={styles.icon} />
                   <Text style={styles.iconText}>{emotion.name}</Text>
                 </TouchableOpacity>
               ) : (
@@ -258,21 +123,23 @@ const styles = StyleSheet.create({
   },
   gridItem: {
     width: "7.33%",
-    alignItems: "center",
     marginBottom: 10,
     marginHorizontal: 4,
     borderWidth: 1,
     borderColor: "#003366",
     borderRadius: 5,
+    paddingTop: 2,
   },
   icon: {
     width: 50,
     height: 50,
     marginBottom: 5,
+    alignSelf: "center",
   },
   iconText: {
     fontSize: 12,
     color: "#333",
+    alignSelf: "center",
   },
 });
 

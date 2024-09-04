@@ -10,145 +10,7 @@ import {
 import * as Speech from "expo-speech";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { TabParamList } from "@/app/(tabs)/_layout";
-
-const foods = [
-  {
-    name: "foods",
-    url: "https://cloud-68ucrctoz-hack-club-bot.vercel.app/0smiling-face-with-smiling-eyes_1f60a.png",
-  },
-  {
-    name: "Happy",
-    url: "/assets/imgs/foods/happy.png",
-  },
-  {
-    name: "Sad",
-    url: "/assets/imgs/foods/sad.png",
-  },
-  {
-    name: "Angry",
-    url: "/assets/imgs/foods/angry.png",
-  },
-  {
-    name: "Scared",
-    url: "/assets/imgs/foods/scared.png",
-  },
-  {
-    name: "Love",
-    url: "/assets/imgs/foods/love.png",
-  },
-  {
-    name: "Joy",
-    url: "/assets/imgs/foods/joy.png",
-  },
-  {
-    name: "Surprised",
-    url: "/assets/imgs/foods/surprised.png",
-  },
-  {
-    name: "Disgust",
-    url: "/assets/imgs/foods/disgust.png",
-  },
-  {
-    name: "Anticipation",
-    url: "/assets/imgs/foods/anticipation.png",
-  },
-  {
-    name: "Anxious",
-    url: "/assets/imgs/foods/anxious.png",
-  },
-  {
-    name: "Frustrated",
-    url: "/assets/imgs/foods/frustrated.png",
-  },
-  {
-    name: "Excited",
-    url: "/assets/imgs/foods/excited.png",
-  },
-  {
-    name: "Disappointed",
-    url: "/assets/imgs/foods/disappointed.png",
-  },
-  {
-    name: "Embarrassed",
-    url: "/assets/imgs/foods/embarrassed.png",
-  },
-  {
-    name: "Worried",
-    url: "/assets/imgs/foods/worried.png",
-  },
-  {
-    name: "Content",
-    url: "/assets/imgs/foods/content.png",
-  },
-  {
-    name: "Lonely",
-    url: "/assets/imgs/foods/lonely.png",
-  },
-  {
-    name: "Jealous",
-    url: "/assets/imgs/foods/jealous.png",
-  },
-  {
-    name: "Compassion",
-    url: "/assets/imgs/foods/compassion.png",
-  },
-  {
-    name: "Grateful",
-    url: "/assets/imgs/foods/grateful.png",
-  },
-  {
-    name: "Pain",
-    url: "/assets/imgs/foods/pain.png",
-  },
-  {
-    name: "Relief",
-    url: "/assets/imgs/foods/relief.png",
-  },
-  {
-    name: "Confused",
-    url: "/assets/imgs/foods/confused.png",
-  },
-  {
-    name: "Thinking",
-    url: "/assets/imgs/foods/thinking.png",
-  },
-  {
-    name: "Sleepy",
-    url: "/assets/imgs/foods/sleepy.png",
-  },
-  {
-    name: "Sick",
-    url: "/assets/imgs/foods/sick.png",
-  },
-  {
-    name: "Hurt",
-    url: "/assets/imgs/foods/hurt.png",
-  },
-  {
-    name: "Sorrow",
-    url: "/assets/imgs/foods/sorrow.png",
-  },
-  {
-    name: "Annoyed",
-    url: "/assets/imgs/foods/annoyed.png",
-  },
-  {
-    name: "Hot",
-    url: "/assets/imgs/foods/hot.png",
-  },
-  {
-    name: "Cold",
-    url: "/assets/imgs/foods/cold.png",
-  },
-  {
-    name: "Hungry",
-    url: "/assets/imgs/foods/hungry.png",
-  },
-  {
-    name: "Silly",
-    url: "/assets/imgs/foods/silly.png",
-  },
-];
+import { foods } from "@/constants/assets/food";
 
 const FoodScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
@@ -172,8 +34,11 @@ const FoodScreen = () => {
 
       {/* Blue Bar with Buttons */}
       <View style={styles.blueBar}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Vocab</Text>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigator.navigate("Settings")}
+        >
+          <Text style={styles.buttonText}>Settings</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
@@ -191,12 +56,12 @@ const FoodScreen = () => {
             <View key={index} style={styles.gridItem}>
               {index % 2 === 0 && index % 24 < 12 && food ? (
                 <TouchableOpacity onPress={() => handlePress(food.name)}>
-                  <Image source={{ uri: food.url }} style={styles.icon} />
+                  <Image source={food.url} style={styles.icon} />
                   <Text style={styles.iconText}>{food.name}</Text>
                 </TouchableOpacity>
               ) : index % 2 === 1 && index % 24 > 11 && food ? (
                 <TouchableOpacity onPress={() => handlePress(food.name)}>
-                  <Image source={{ uri: food.url }} style={styles.icon} />
+                  <Image source={food.url} style={styles.icon} />
                   <Text style={styles.iconText}>{food.name}</Text>
                 </TouchableOpacity>
               ) : (
@@ -258,21 +123,23 @@ const styles = StyleSheet.create({
   },
   gridItem: {
     width: "7.33%",
-    alignItems: "center",
     marginBottom: 10,
     marginHorizontal: 4,
     borderWidth: 1,
     borderColor: "#003366",
     borderRadius: 5,
+    paddingTop: 2,
   },
   icon: {
     width: 50,
     height: 50,
     marginBottom: 5,
+    alignSelf: "center",
   },
   iconText: {
     fontSize: 12,
     color: "#333",
+    alignSelf: "center",
   },
 });
 

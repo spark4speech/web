@@ -14,6 +14,8 @@ type TabParamList = {
   Food: undefined;
 };
 
+const TabParamListValues = ["Home", "Emotions", "Food"];
+
 const Tab = createBottomTabNavigator<TabParamList>();
 
 export default function TabNavigator() {
@@ -75,4 +77,4 @@ export default function TabNavigator() {
   );
 }
 
-export { TabParamList };
+export { TabParamList, TabParamListValues };
