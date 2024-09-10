@@ -9,23 +9,18 @@ import {
 } from "react-native";
 import * as Speech from "expo-speech";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
-import {
-  TabParamList,
-  FoodParamList,
-  FoodParamListValues,
-} from "@/app/(tabs)/_layout";
-import { foods } from "@/constants/assets/food";
+import { TabParamList } from "@/app/(tabs)/_layout";
+import { fruits } from "@/constants/assets/fruit";
 
-// Updated FoodScreen component
 const FoodScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
 
   const [sentence, setSentence] = useState("");
 
-  const handlePress = (foodName: string) => {
-    setSentence((prev) => (prev ? `${prev} ${foodName}` : foodName));
+  const handlePress = (fruitName: string) => {
+    setSentence((prev) => (prev ? `${prev} ${fruitName}` : fruitName));
 
-    Speech.speak(foodName);
+    Speech.speak(fruitName);
   };
 
   return (
@@ -47,57 +42,32 @@ const FoodScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigator.navigate("Home")}
+          onPress={() => navigator.navigate("Food")}
         >
-          <Text style={styles.buttonText}>Back to Home</Text>
+          <Text style={styles.buttonText}>Back to Food</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Grid of subfolders */}
-      <View style={styles.gridContainer}>
-        {Object.keys(FoodParamListValues).map((key) => (
-          <TouchableOpacity
-            key={key}
-            style={styles.subfolderGridItem}
-            onPress={() =>
-              navigator.navigate(
-                FoodParamListValues[Number(key)] as keyof FoodParamList
-              )
-            }
-          >
-            <Image
-              source={{
-                uri: "https://static-00.iconduck.com/assets.00/red-apple-emoji-1779x2048-aklr8hg9.png",
-              }}
-              style={styles.icon}
-            />
-            <Text style={styles.iconText}>
-              {FoodParamListValues[Number(key) as number]}
-            </Text>
-          </TouchableOpacity>
-        ))}
-      </View>
-
-      {/* Grid of food items */}
+      {/* Grid of fruits */}
       <ScrollView contentContainerStyle={styles.gridContainer}>
         {Array.from({ length: 72 }).map((_, index) => {
-          const food = foods[Math.floor(index / 2)];
+          const fruit = fruits[Math.floor(index / 2)];
           return (
             <View key={index} style={styles.gridItem}>
-              {index % 2 === 0 && index % 24 < 12 && food ? (
-                <TouchableOpacity onPress={() => handlePress(food.name)}>
-                  <Image source={food.url} style={styles.icon} />
-                  <Text style={styles.iconText}>{food.name}</Text>
+              {index % 2 === 0 && index % 24 < 12 && fruit ? (
+                <TouchableOpacity onPress={() => handlePress(fruit.name)}>
+                  <Image source={fruit.url} style={styles.icon} />
+                  <Text style={styles.iconText}>{fruit.name}</Text>
                 </TouchableOpacity>
-              ) : index % 2 === 1 && index % 24 > 11 && food ? (
-                <TouchableOpacity onPress={() => handlePress(food.name)}>
-                  <Image source={food.url} style={styles.icon} />
-                  <Text style={styles.iconText}>{food.name}</Text>
+              ) : index % 2 === 1 && index % 24 > 11 && fruit ? (
+                <TouchableOpacity onPress={() => handlePress(fruit.name)}>
+                  <Image source={fruit.url} style={styles.icon} />
+                  <Text style={styles.iconText}>{fruit.name}</Text>
                 </TouchableOpacity>
               ) : (
                 <Image
                   source={{
-                    uri: food?.name == "" ? food?.url || "" : "",
+                    uri: fruit?.name == "" ? fruit?.url || "" : "",
                   }}
                   style={styles.icon}
                 />
@@ -159,17 +129,6 @@ const styles = StyleSheet.create({
     borderColor: "#003366",
     borderRadius: 5,
     paddingTop: 2,
-  },
-  subfolderGridItem: {
-    width: "7.33%",
-    marginBottom: 10,
-    marginHorizontal: 4,
-    borderWidth: 1,
-    borderColor: "#003366",
-    borderRadius: 5,
-    paddingTop: 2,
-    marginVertical: 5,
-    alignItems: "flex-start",
   },
   icon: {
     width: 50,

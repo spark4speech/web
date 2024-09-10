@@ -6,15 +6,22 @@ import HomeScreen from "./index";
 import SettingsScreen from "./settings";
 import EmotionsScreen from "./emotions";
 import FoodScreen from "./food";
+import FruitScreen from "./fruit";
 
 type TabParamList = {
   Home: undefined;
   Settings: undefined;
   Emotions: undefined;
   Food: undefined;
+  Fruit: undefined;
+};
+
+type FoodParamList = {
+  Fruit: undefined;
 };
 
 const TabParamListValues = ["Home", "Emotions", "Food"];
+const FoodParamListValues = ["Fruit"];
 
 const Tab = createBottomTabNavigator<TabParamList>();
 
@@ -61,6 +68,19 @@ export default function TabNavigator() {
         }}
       />
       <Tab.Screen
+        name="Fruit"
+        component={FruitScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
         name="Settings"
         component={SettingsScreen}
         options={{
@@ -77,4 +97,4 @@ export default function TabNavigator() {
   );
 }
 
-export { TabParamList, TabParamListValues };
+export { TabParamList, TabParamListValues, FoodParamList, FoodParamListValues };

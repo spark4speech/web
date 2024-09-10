@@ -17,6 +17,8 @@ const PAGE_ICONS: { [key: string]: string } = {
   Emotions:
     "https://cloud-68ucrctoz-hack-club-bot.vercel.app/0smiling-face-with-smiling-eyes_1f60a.png",
   Food: "https://cloud-6ukpbirpk-hack-club-bot.vercel.app/0hamburger-emoji-1024x891-ircy4ojs.png",
+  Fruit:
+    "https://static-00.iconduck.com/assets.00/red-apple-emoji-1779x2048-aklr8hg9.png",
 };
 
 const IndexScreen = () => {
