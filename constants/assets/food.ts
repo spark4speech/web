@@ -1,138 +1,82 @@
 export const foods = [
   {
-    name: "Foods",
-    url: require("@/assets/imgs/emotions/happy.png"),
+    name: "Food",
+    url: require("@/assets/imgs/foods/hamburger.png"),
   },
   {
-    name: "Happy",
-    url: require("@/assets/imgs/emotions/happy.png"),
+    name: "Bread",
+    url: require("@/assets/imgs/foods/bread.png"),
   },
   {
-    name: "Sad",
-    url: require("@/assets/imgs/emotions/sad.png"),
+    name: "Canned Food",
+    url: require("@/assets/imgs/foods/cannedfood.png"),
   },
   {
-    name: "Angry",
-    url: require("@/assets/imgs/emotions/angry.png"),
+    name: "Chicken Nuggets",
+    url: require("@/assets/imgs/foods/chickennuggets.png"),
   },
   {
-    name: "Scared",
-    url: require("@/assets/imgs/emotions/scared.png"),
+    name: "Egg",
+    url: require("@/assets/imgs/foods/egg.png"),
   },
   {
-    name: "Love",
-    url: require("@/assets/imgs/emotions/love.png"),
+    name: "Egg (Alternative)",
+    url: require("@/assets/imgs/foods/egg2.png"),
   },
   {
-    name: "Joy",
-    url: require("@/assets/imgs/emotions/joy.png"),
+    name: "Fries",
+    url: require("@/assets/imgs/foods/fries.png"),
   },
   {
-    name: "Surprised",
-    url: require("@/assets/imgs/emotions/surprised.png"),
+    name: "Hamburger",
+    url: require("@/assets/imgs/foods/hamburger.png"),
   },
   {
-    name: "Disgust",
-    url: require("@/assets/imgs/emotions/disgust.png"),
+    name: "Hotdog",
+    url: require("@/assets/imgs/foods/hotdog.png"),
   },
   {
-    name: "Anticipation",
-    url: require("@/assets/imgs/emotions/anticipation.png"),
+    name: "Noodles",
+    url: require("@/assets/imgs/foods/noodles.png"),
   },
   {
-    name: "Anxious",
-    url: require("@/assets/imgs/emotions/anxious.png"),
+    name: "Pizza",
+    url: require("@/assets/imgs/foods/pizza.png"),
   },
   {
-    name: "Frustrated",
-    url: require("@/assets/imgs/emotions/frustrated.png"),
+    name: "Pretzel",
+    url: require("@/assets/imgs/foods/pretzel.png"),
   },
   {
-    name: "Excited",
-    url: require("@/assets/imgs/emotions/excited.png"),
+    name: "Rice",
+    url: require("@/assets/imgs/foods/rice.png"),
   },
   {
-    name: "Disappointed",
-    url: require("@/assets/imgs/emotions/disappointed.png"),
+    name: "Salad",
+    url: require("@/assets/imgs/foods/salad.png"),
   },
   {
-    name: "Embarrassed",
-    url: require("@/assets/imgs/emotions/embarrassed.png"),
+    name: "Sandwich",
+    url: require("@/assets/imgs/foods/sandwich.png"),
   },
   {
-    name: "Worried",
-    url: require("@/assets/imgs/emotions/worried.png"),
+    name: "Soup",
+    url: require("@/assets/imgs/foods/soup.png"),
   },
   {
-    name: "Content",
-    url: require("@/assets/imgs/emotions/content.png"),
+    name: "Spaghetti",
+    url: require("@/assets/imgs/foods/spaghetti.png"),
   },
   {
-    name: "Lonely",
-    url: require("@/assets/imgs/emotions/lonely.png"),
+    name: "Steak",
+    url: require("@/assets/imgs/foods/steak.png"),
   },
   {
-    name: "Jealous",
-    url: require("@/assets/imgs/emotions/jealous.png"),
+    name: "Sushi",
+    url: require("@/assets/imgs/foods/sushi.png"),
   },
   {
-    name: "Compassion",
-    url: require("@/assets/imgs/emotions/compassion.png"),
-  },
-  {
-    name: "Grateful",
-    url: require("@/assets/imgs/emotions/grateful.png"),
-  },
-  {
-    name: "Pain",
-    url: require("@/assets/imgs/emotions/pain.png"),
-  },
-  {
-    name: "Relief",
-    url: require("@/assets/imgs/emotions/relief.png"),
-  },
-  {
-    name: "Confused",
-    url: require("@/assets/imgs/emotions/confused.png"),
-  },
-  {
-    name: "Thinking",
-    url: require("@/assets/imgs/emotions/thinking.png"),
-  },
-  {
-    name: "Sleepy",
-    url: require("@/assets/imgs/emotions/sleepy.png"),
-  },
-  {
-    name: "Sick",
-    url: require("@/assets/imgs/emotions/sick.png"),
-  },
-  {
-    name: "Hurt",
-    url: require("@/assets/imgs/emotions/hurt.png"),
-  },
-  {
-    name: "Sorrow",
-    url: require("@/assets/imgs/emotions/sorrow.png"),
-  },
-  {
-    name: "Annoyed",
-    url: require("@/assets/imgs/emotions/annoyed.png"),
-  },
-  {
-    name: "Hot",
-    url: require("@/assets/imgs/emotions/hot.png"),
-  },
-  {
-    name: "Cold",
-    url: require("@/assets/imgs/emotions/cold.png"),
-  },
-  {
-    name: "Hungry",
-    url: require("@/assets/imgs/emotions/hungry.png"),
-  },
-  {
-    name: "Silly",
-    url: require("@/assets/imgs/emotions/silly.png"),
+    name: "Taco",
+    url: require("@/assets/imgs/foods/taco.png"),
   },
 ];

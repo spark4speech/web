@@ -15,6 +15,7 @@ import {
   FoodParamListValues,
 } from "@/app/(tabs)/_layout";
 import { foods } from "@/constants/assets/food";
+import { PAGE_ICONS } from ".";
 
 // Updated FoodScreen component
 const FoodScreen = () => {
@@ -67,7 +68,7 @@ const FoodScreen = () => {
           >
             <Image
               source={{
-                uri: "https://static-00.iconduck.com/assets.00/red-apple-emoji-1779x2048-aklr8hg9.png",
+                uri: PAGE_ICONS[FoodParamListValues[Number(key) as number]],
               }}
               style={styles.icon}
             />
