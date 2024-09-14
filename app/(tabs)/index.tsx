@@ -18,6 +18,8 @@ export const PAGE_ICONS: { [key: string]: string } = {
     "https://cloud-68ucrctoz-hack-club-bot.vercel.app/0smiling-face-with-smiling-eyes_1f60a.png",
   Food: "https://cloud-6ukpbirpk-hack-club-bot.vercel.app/0hamburger-emoji-1024x891-ircy4ojs.png",
   Fruit: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
+  Vegetable: "@/assets/imgs/foods/vegetables/zani.png",
+  Dessert: "@/assets/imgs/foods/vegetables/shortcake.png",
 };
 
 const IndexScreen = () => {
