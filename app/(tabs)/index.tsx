@@ -20,6 +20,10 @@ export const PAGE_ICONS: { [key: string]: string } = {
   Fruit: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
   Vegetable: "@/assets/imgs/foods/vegetables/zani.png",
   Dessert: "@/assets/imgs/foods/vegetables/shortcake.png",
+  Clothing: "@/assets/imgs/clothing/shirt.png",
+  Colors: "@/assets/imgs/colors/rainbow2.png",
+  Shapes: "@/assets/imgs/shapes/circle.png",
+  Transportation: "@/assets/imgs/transportation/car.png",
 };
 
 const IndexScreen = () => {

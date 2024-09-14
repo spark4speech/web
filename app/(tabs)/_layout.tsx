@@ -9,6 +9,10 @@ import FoodScreen from "./food";
 import FruitScreen from "./fruit";
 import VegetableScreen from "./vegetables";
 import DessertScreen from "./dessert";
+import ClothingScreen from "./clothing";
+import ColorScreen from "./colors";
+import ShapeScreen from "./shapes";
+import TransportationScreen from "./transportation";
 
 type TabParamList = {
   Home: undefined;
@@ -18,6 +22,10 @@ type TabParamList = {
   Fruit: undefined;
   Vegetable: undefined;
   Dessert: undefined;
+  Clothing: undefined;
+  Colors: undefined;
+  Shapes: undefined;
+  Transportation: undefined;
 };
 
 type FoodParamList = {
@@ -26,7 +34,7 @@ type FoodParamList = {
   Dessert: undefined;
 };
 
-const TabParamListValues = ["Home", "Emotions", "Food"];
+const TabParamListValues = ["Home", "Emotions", "Food", "Clothing", "Colors", "Shapes", "Transportation"];
 const FoodParamListValues = ["Fruit", "Vegetable", "Dessert"];
 
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -102,6 +110,58 @@ export default function TabNavigator() {
       <Tab.Screen
         name="Dessert"
         component={DessertScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Clothing"
+        component={ClothingScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Colors"
+        component={ColorScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Shapes"
+        component={ShapeScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Transportation"
+        component={TransportationScreen}
         options={{
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
