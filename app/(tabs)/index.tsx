@@ -24,6 +24,8 @@ export const PAGE_ICONS: { [key: string]: string } = {
   Colors: "@/assets/imgs/colors/rainbow2.png",
   Shapes: "@/assets/imgs/shapes/circle.png",
   Transportation: "@/assets/imgs/transportation/car.png",
+  Weather: "@/assets/img/weather/sunny.png",
+  Body: "@assets/img/body/body.png",
 };
 
 const IndexScreen = () => {
