@@ -15,6 +15,7 @@ import ShapeScreen from "./shapes";
 import TransportationScreen from "./transportation";
 import WeatherScreen from "./weather";
 import BodyScreen from "./body";
+import HobbiesScreen from "./hobbies";
 
 type TabParamList = {
   Home: undefined;
@@ -30,6 +31,7 @@ type TabParamList = {
   Transportation: undefined;
   Weather: undefined;
   Body: undefined;
+  Hobbies: undefined;
 };
 
 type FoodParamList = {
@@ -38,7 +40,7 @@ type FoodParamList = {
   Dessert: undefined;
 };
 
-const TabParamListValues = ["Home", "Emotions", "Food", "Clothing", "Colors", "Shapes", "Transportation", "Weather", "Body"];
+const TabParamListValues = ["Home", "Emotions", "Food", "Clothing", "Colors", "Shapes", "Transportation", "Weather", "Body", "Hobbies"];
 const FoodParamListValues = ["Fruit", "Vegetable", "Dessert"];
 
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -192,6 +194,19 @@ export default function TabNavigator() {
       <Tab.Screen
         name="Body"
         component={BodyScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Hobbies"
+        component={HobbiesScreen}
         options={{
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
