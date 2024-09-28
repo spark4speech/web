@@ -35,7 +35,71 @@ const SINGLE_BUTTONS = [
     name: "The",
     image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
   },
-  // Add more button objects here
+  {
+    name: "Sorry",
+    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
+    //image: "@assets/img/general/sorry.png",
+  },
+  {
+    name: "Please",
+    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
+    //image: "@assets/img/general/please.png",
+  },
+  {
+    name: "Thank You",
+    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
+    //image: "@assets/img/general/thank-you.png",
+  },
+  {
+    name: "Help",
+    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
+    //image: "@assets/img/general/help.png",
+  },
+  {
+    name: "Money",
+    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
+    //image: "@assets/img/general/money.png",
+  },
+  {
+    name: "Yes",
+    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
+    //image: "@assets/img/general/yes.png",
+  },
+  {
+    name: "No",
+    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
+    //image: "@assets/img/general/no.png",
+  },
+  {
+    name: "Hello",
+    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
+    //image: "@assets/img/general/hello.png",
+  },
+  {
+    name: "Goodbye",
+    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
+    //image: "@assets/img/general/goodbye.png",
+  },
+  {
+    name: "Time",
+    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
+    //image: "@assets/img/general/time.png",
+  },
+  {
+    name: "Home",
+    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
+    //image: "@assets/img/general/home.png",
+  },
+  {
+    name: "Day",
+    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
+    //image: "@assets/img/general/day.png",
+  },
+  {
+    name: "Night",
+    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
+    //image: "@assets/img/general/night.png",
+  },
 ];
 
 const IndexScreen = () => {
