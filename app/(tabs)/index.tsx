@@ -34,7 +34,6 @@ const SINGLE_BUTTONS = [
   {
     name: "The",
     image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
-    isButton: true,
   },
   // Add more button objects here
 ];
@@ -118,7 +117,7 @@ const IndexScreen = () => {
           <TouchableOpacity
             key={`button-${index}`}
             style={styles.gridItem}
-            onPress={() => handlePress(button.name, button.isButton)}
+            onPress={() => handlePress(button.name, true)}
           >
             <Image source={{ uri: button.image }} style={styles.icon} />
             <Text style={styles.iconText}>{button.name}</Text>
