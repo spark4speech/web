@@ -40,7 +40,18 @@ type FoodParamList = {
   Dessert: undefined;
 };
 
-const TabParamListValues = ["Home", "Emotions", "Food", "Clothing", "Colors", "Shapes", "Transportation", "Weather", "Body", "Hobbies"];
+const TabParamListValues = [
+  "Home",
+  "Emotions",
+  "Food",
+  "Clothing",
+  "Colors",
+  "Shapes",
+  "Transportation",
+  "Weather",
+  "Body",
+  "Hobbies",
+];
 const FoodParamListValues = ["Fruit", "Vegetable", "Dessert"];
 
 const Tab = createBottomTabNavigator<TabParamList>();

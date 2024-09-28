@@ -10,6 +10,7 @@ import {
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { TabParamList, TabParamListValues } from "@/app/(tabs)/_layout";
 import { Alert, Modal, Pressable } from "react-native";
+import * as Speech from "expo-speech";
 
 const DEFAULT_ICON = "https://cloud-nhes44ias-hack-club-bot.vercel.app/0qm.jpg";
 
@@ -29,23 +30,44 @@ export const PAGE_ICONS: { [key: string]: string } = {
   Hobbies: "@assets/img/hobbies/reading.png",
 };
 
+const SINGLE_BUTTONS = [
+  {
+    name: "The",
+    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
+    isButton: true,
+  },
+  // Add more button objects here
+];
+
 const IndexScreen = () => {
   const navigation = useNavigation<NavigationProp<TabParamList>>();
-
   const [modalVisible, setModalVisible] = useState(false);
+  const [sentence, setSentence] = useState("");
 
-  const handlePress = (destination: keyof TabParamList) => {
-    navigation.navigate(destination);
+  const handlePress = (
+    destination: keyof TabParamList | string,
+    isButton?: boolean
+  ) => {
+    if (!isButton) {
+      navigation.navigate(destination as keyof TabParamList);
+    } else {
+      setSentence((prev) =>
+        prev ? `${prev} ${destination as string}` : (destination as string)
+      );
+      Speech.speak(destination as string);
+    }
   };
 
   const tabKeys = Object.keys(TabParamListValues).slice(1);
-  const defaultItemsCount = 72 - tabKeys.length;
+  const defaultItemsCount = 72 - tabKeys.length - SINGLE_BUTTONS.length;
 
   return (
     <View style={styles.container}>
       {/* Text Area */}
       <View style={styles.topArea}>
-        <Text style={styles.placeholderText}>Text here</Text>
+        <Text style={styles.placeholderText}>
+          {sentence || "Start speaking...."}
+        </Text>
       </View>
 
       {/* Blue Bar with Buttons */}
@@ -53,37 +75,7 @@ const IndexScreen = () => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            return (
-              <View style={styles.centeredView}>
-                <Modal
-                  animationType="slide"
-                  transparent={true}
-                  visible={modalVisible}
-                  onRequestClose={() => {
-                    Alert.alert("Modal has been closed.");
-                    setModalVisible(!modalVisible);
-                  }}
-                >
-                  <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                      <Text style={styles.modalText}>Hello World!</Text>
-                      <Pressable
-                        style={[styles.button, styles.buttonClose]}
-                        onPress={() => setModalVisible(!modalVisible)}
-                      >
-                        <Text style={styles.textStyle}>Hide Modal</Text>
-                      </Pressable>
-                    </View>
-                  </View>
-                </Modal>
-                <Pressable
-                  style={[styles.button, styles.buttonOpen]}
-                  onPress={() => setModalVisible(true)}
-                >
-                  <Text style={styles.textStyle}>Show Modal</Text>
-                </Pressable>
-              </View>
-            );
+            setModalVisible(true);
           }}
         >
           <Text style={styles.buttonText}>Settings</Text>
@@ -98,31 +90,42 @@ const IndexScreen = () => {
 
       {/* Grid of Icons */}
       <ScrollView contentContainerStyle={styles.gridContainer}>
-        {Object.keys(TabParamListValues)
-          .slice(1)
-          .map((key) => (
-            <TouchableOpacity
-              key={key}
-              style={styles.gridItem}
-              onPress={() =>
-                handlePress(
-                  TabParamListValues[
-                    Number(key) as number
-                  ] as keyof TabParamList
-                )
-              }
-            >
-              <Image
-                source={{
-                  uri: PAGE_ICONS[TabParamListValues[Number(key) as number]],
-                }}
-                style={styles.icon}
-              />
-              <Text style={styles.iconText}>
-                {TabParamListValues[Number(key) as number]}
-              </Text>
-            </TouchableOpacity>
-          ))}
+        {/* Tab icons */}
+        {tabKeys.map((key) => (
+          <TouchableOpacity
+            key={key}
+            style={styles.gridItem}
+            onPress={() =>
+              handlePress(
+                TabParamListValues[Number(key) as number] as keyof TabParamList
+              )
+            }
+          >
+            <Image
+              source={{
+                uri: PAGE_ICONS[TabParamListValues[Number(key) as number]],
+              }}
+              style={styles.icon}
+            />
+            <Text style={styles.iconText}>
+              {TabParamListValues[Number(key) as number]}
+            </Text>
+          </TouchableOpacity>
+        ))}
+
+        {/* Single buttons */}
+        {SINGLE_BUTTONS.map((button, index) => (
+          <TouchableOpacity
+            key={`button-${index}`}
+            style={styles.gridItem}
+            onPress={() => handlePress(button.name, button.isButton)}
+          >
+            <Image source={{ uri: button.image }} style={styles.icon} />
+            <Text style={styles.iconText}>{button.name}</Text>
+          </TouchableOpacity>
+        ))}
+
+        {/* Default placeholder icons */}
         {Array.from({ length: defaultItemsCount }).map((_, index) => (
           <TouchableOpacity
             key={`default-${index}`}
@@ -196,42 +199,6 @@ const styles = StyleSheet.create({
   iconText: {
     fontSize: 12,
     color: "#333",
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  buttonOpen: {
-    backgroundColor: "#F194FF",
-  },
-  buttonClose: {
-    backgroundColor: "#2196F3",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center",
   },
 });
 
