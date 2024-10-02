@@ -8,6 +8,10 @@ export const body = [
     url: require("@/assets/imgs/body/arm.png"),
   },
   {
+    name: "Blood",
+    url: require("@/assets/imgs/body/blood.png"),
+  },
+  {
     name: "Bone",
     url: require("@/assets/imgs/body/bone.png"),
   },
