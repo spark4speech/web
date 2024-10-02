@@ -15,7 +15,7 @@ import {
   FoodParamListValues,
 } from "@/app/(tabs)/_layout";
 import { foods } from "@/constants/assets/food";
-import { PAGE_ICONS } from ".";
+import { icons } from "@/constants/assets/categoryIcons";
 
 // Updated FoodScreen component
 const FoodScreen = () => {
@@ -67,9 +67,7 @@ const FoodScreen = () => {
             }
           >
             <Image
-              source={{
-                uri: PAGE_ICONS[FoodParamListValues[Number(key) as number]],
-              }}
+              source={icons[FoodParamListValues[Number(key) as number]]}
               style={styles.icon}
             />
             <Text style={styles.iconText}>
