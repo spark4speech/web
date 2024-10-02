@@ -11,96 +11,10 @@ import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { TabParamList, TabParamListValues } from "@/app/(tabs)/_layout";
 import { Alert, Modal, Pressable } from "react-native";
 import * as Speech from "expo-speech";
+import { icons } from "@/constants/assets/categoryIcons";
+import { singleButtonIcons } from "@/constants/singleButtonIcons";
 
 const DEFAULT_ICON = "https://cloud-nhes44ias-hack-club-bot.vercel.app/0qm.jpg";
-
-export const PAGE_ICONS: { [key: string]: string } = {
-  Emotions:
-    "https://cloud-68ucrctoz-hack-club-bot.vercel.app/0smiling-face-with-smiling-eyes_1f60a.png",
-  Food: "https://cloud-6ukpbirpk-hack-club-bot.vercel.app/0hamburger-emoji-1024x891-ircy4ojs.png",
-  Fruit: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
-  Vegetable: "@/assets/imgs/foods/vegetables/zani.png",
-  Dessert: "@/assets/imgs/foods/vegetables/shortcake.png",
-  Clothing: "@/assets/imgs/clothing/shirt.png",
-  Colors: "@/assets/imgs/colors/rainbow2.png",
-  Shapes: "@/assets/imgs/shapes/circle.png",
-  Transportation: "@/assets/imgs/transportation/car.png",
-  Weather: "@/assets/img/weather/sunny.png",
-  Body: "@assets/img/body/body.png",
-  Hobbies: "@assets/img/hobbies/reading.png",
-};
-
-const SINGLE_BUTTONS = [
-  {
-    name: "The",
-    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
-  },
-  {
-    name: "Sorry",
-    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
-    //image: "@assets/img/general/sorry.png",
-  },
-  {
-    name: "Please",
-    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
-    //image: "@assets/img/general/please.png",
-  },
-  {
-    name: "Thank You",
-    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
-    //image: "@assets/img/general/thank-you.png",
-  },
-  {
-    name: "Help",
-    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
-    //image: "@assets/img/general/help.png",
-  },
-  {
-    name: "Money",
-    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
-    //image: "@assets/img/general/money.png",
-  },
-  {
-    name: "Yes",
-    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
-    //image: "@assets/img/general/yes.png",
-  },
-  {
-    name: "No",
-    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
-    //image: "@assets/img/general/no.png",
-  },
-  {
-    name: "Hello",
-    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
-    //image: "@assets/img/general/hello.png",
-  },
-  {
-    name: "Goodbye",
-    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
-    //image: "@assets/img/general/goodbye.png",
-  },
-  {
-    name: "Time",
-    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
-    //image: "@assets/img/general/time.png",
-  },
-  {
-    name: "Home",
-    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
-    //image: "@assets/img/general/home.png",
-  },
-  {
-    name: "Day",
-    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
-    //image: "@assets/img/general/day.png",
-  },
-  {
-    name: "Night",
-    image: "https://cloud-9nxx2je0t-hack-club-bot.vercel.app/0apple.png",
-    //image: "@assets/img/general/night.png",
-  },
-];
 
 const IndexScreen = () => {
   const navigation = useNavigation<NavigationProp<TabParamList>>();
@@ -122,7 +36,7 @@ const IndexScreen = () => {
   };
 
   const tabKeys = Object.keys(TabParamListValues).slice(1);
-  const defaultItemsCount = 72 - tabKeys.length - SINGLE_BUTTONS.length;
+  const defaultItemsCount = 72 - tabKeys.length - singleButtonIcons.length;
 
   return (
     <View style={styles.container}>
@@ -165,9 +79,7 @@ const IndexScreen = () => {
             }
           >
             <Image
-              source={{
-                uri: PAGE_ICONS[TabParamListValues[Number(key) as number]],
-              }}
+              source={icons[TabParamListValues[Number(key) as number]]}
               style={styles.icon}
             />
             <Text style={styles.iconText}>
@@ -177,13 +89,13 @@ const IndexScreen = () => {
         ))}
 
         {/* Single buttons */}
-        {SINGLE_BUTTONS.map((button, index) => (
+        {singleButtonIcons.map((button, index) => (
           <TouchableOpacity
             key={`button-${index}`}
             style={styles.gridItem}
             onPress={() => handlePress(button.name, true)}
           >
-            <Image source={{ uri: button.image }} style={styles.icon} />
+            <Image source={button.image as unknown as undefined} style={styles.icon} />
             <Text style={styles.iconText}>{button.name}</Text>
           </TouchableOpacity>
         ))}
