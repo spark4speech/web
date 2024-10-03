@@ -10,17 +10,17 @@ import {
 import * as Speech from "expo-speech";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { TabParamList } from "@/app/(tabs)/_layout";
-import { desserts } from "@/constants/assets/dessert";
+import { bird } from "@/constants/assets/bird";
 
-const FoodScreen = () => {
+const AnimalsScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
 
   const [sentence, setSentence] = useState("");
 
-  const handlePress = (dessertName: string) => {
-    setSentence((prev) => (prev ? `${prev} ${dessertName}` : dessertName));
+  const handlePress = (birdName: string) => {
+    setSentence((prev) => (prev ? `${prev} ${birdName}` : birdName));
 
-    Speech.speak(dessertName);
+    Speech.speak(birdName);
   };
 
   return (
@@ -42,32 +42,32 @@ const FoodScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigator.navigate("Food")}
+          onPress={() => navigator.navigate("Animals")}
         >
-          <Text style={styles.buttonText}>Back to Food</Text>
+          <Text style={styles.buttonText}>Back to Animals</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Grid of desserts */}
+      {/* Grid of birds */}
       <ScrollView contentContainerStyle={styles.gridContainer}>
         {Array.from({ length: 72 }).map((_, index) => {
-          const fruit = desserts[Math.floor(index / 2)];
+          const birds = bird[Math.floor(index / 2)];
           return (
             <View key={index} style={styles.gridItem}>
-              {index % 2 === 0 && index % 24 < 12 && fruit ? (
-                <TouchableOpacity onPress={() => handlePress(fruit.name)}>
-                  <Image source={fruit.url} style={styles.icon} />
-                  <Text style={styles.iconText}>{fruit.name}</Text>
+              {index % 2 === 0 && index % 24 < 12 && birds ? (
+                <TouchableOpacity onPress={() => handlePress(birds.name)}>
+                  <Image source={birds.url} style={styles.icon} />
+                  <Text style={styles.iconText}>{birds.name}</Text>
                 </TouchableOpacity>
-              ) : index % 2 === 1 && index % 24 > 11 && fruit ? (
-                <TouchableOpacity onPress={() => handlePress(fruit.name)}>
-                  <Image source={fruit.url} style={styles.icon} />
-                  <Text style={styles.iconText}>{fruit.name}</Text>
+              ) : index % 2 === 1 && index % 24 > 11 && birds ? (
+                <TouchableOpacity onPress={() => handlePress(birds.name)}>
+                  <Image source={birds.url} style={styles.icon} />
+                  <Text style={styles.iconText}>{birds.name}</Text>
                 </TouchableOpacity>
               ) : (
                 <Image
                   source={{
-                    uri: fruit?.name == "" ? fruit?.url || "" : "",
+                    uri: birds?.name == "" ? birds?.url || "" : "",
                   }}
                   style={styles.icon}
                 />
@@ -143,4 +143,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FoodScreen;
+export default AnimalsScreen;
