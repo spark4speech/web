@@ -16,6 +16,9 @@ import TransportationScreen from "./transportation";
 import WeatherScreen from "./weather";
 import BodyScreen from "./body";
 import HobbiesScreen from "./hobbies";
+import DirectionsScreen from "./directions";
+import PlacesScreen from "./places";
+import OccupationsScreen from "./occupations";
 
 type TabParamList = {
   Home: undefined;
@@ -32,6 +35,9 @@ type TabParamList = {
   Weather: undefined;
   Body: undefined;
   Hobbies: undefined;
+  Directions: undefined;
+  Places: undefined;
+  Occupations: undefined;
 };
 
 type FoodParamList = {
@@ -51,6 +57,9 @@ const TabParamListValues = [
   "Weather",
   "Body",
   "Hobbies",
+  "Directions",
+  "Places",
+  "Occupations",
 ];
 const FoodParamListValues = ["Fruit", "Vegetable", "Dessert"];
 
@@ -218,6 +227,45 @@ export default function TabNavigator() {
       <Tab.Screen
         name="Hobbies"
         component={HobbiesScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Directions"
+        component={DirectionsScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Places"
+        component={PlacesScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Occupations"
+        component={OccupationsScreen}
         options={{
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon

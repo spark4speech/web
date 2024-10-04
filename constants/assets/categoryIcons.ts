@@ -15,4 +15,7 @@ export const icons: Icons = {
   Weather: require("@/assets/imgs/weather/sunny.png"),
   Body: require("@/assets/imgs/body/body.png"),
   Hobbies: require("@/assets/imgs/hobbies/reading.png"),
+  Directions: require("@/assets/imgs/directions/compass.png"),
+  Places: require("@/assets/imgs/places/globe.png"),
+  Occupations: require("@/assets/imgs/occupations/male/astronaut.png"),
 };
