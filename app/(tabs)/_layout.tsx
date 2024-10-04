@@ -29,6 +29,9 @@ import OtherScreen from "./other";
 import PetScreen from "./pet";
 import PrehistoricScreen from "./prehistoric";
 import ReptileScreen from "./reptile-amphibian";
+import DirectionsScreen from "./directions";
+import PlacesScreen from "./places";
+import OccupationsScreen from "./occupations";
 
 type TabParamList = {
   Home: undefined;
@@ -58,6 +61,9 @@ type TabParamList = {
   Pet: undefined;
   Prehistoric: undefined;
   Reptile: undefined;
+  Directions: undefined;
+  Places: undefined;
+  Occupations: undefined;
 };
 
 type FoodParamList = {
@@ -93,6 +99,9 @@ const TabParamListValues = [
   "Hobbies",
   "Animals",
   "Holidays",
+  "Directions",
+  "Places",
+  "Occupations",
 ];
 const FoodParamListValues = ["Fruit", "Vegetable", "Dessert"];
 const AnimalsParamListValues = ["Bird", "Bug", "Farm", "Forest", "Jungle", "Mythological", "Water", "Other", "Pet", "Prehistoric", "Reptile"];
@@ -430,6 +439,45 @@ export default function TabNavigator() {
       <Tab.Screen
         name="Other"
         component={OtherScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Directions"
+        component={DirectionsScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Places"
+        component={PlacesScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Occupations"
+        component={OccupationsScreen}
         options={{
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon

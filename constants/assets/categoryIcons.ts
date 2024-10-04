@@ -28,4 +28,7 @@ export const icons: Icons = {
   Pet: require("@/assets/imgs/animals/pet/cat.png"),
   Prehistoric: require("@/assets/imgs/animals/prehistoric/t-rex.png"),
   Reptile: require("@/assets/imgs/animals/reptile-amphibian/snake.png"),
+  Directions: require("@/assets/imgs/directions/compass.png"),
+  Places: require("@/assets/imgs/places/globe.png"),
+  Occupations: require("@/assets/imgs/occupations/male/astronaut.png"),
 };

@@ -55,4 +55,36 @@ export const singleButtonIcons: { name: string; image: string }[] = [
     name: "Night",
     image: require("@/assets/imgs/general/night.png"),
   },
+  {
+    name: "Good",
+    image: require("@/assets/imgs/general/good.png"),
+  },
+  {
+    name: "Bad",
+    image: require("@/assets/imgs/general/bad.png"),
+  },
+  {
+    name: "Not",
+    image: require("@/assets/imgs/general/not.png"),
+  },
+  {
+    name: "Say",
+    image: require("@/assets/imgs/general/say.png"),
+  },
+  {
+    name: "Think",
+    image: require("@/assets/imgs/general/think.png"),
+  },
+  {
+    name: "Watch",
+    image: require("@/assets/imgs/general/watch.png"),
+  },
+  {
+    name: "Sit",
+    image: require("@/assets/imgs/general/sit.png"),
+  },
+  {
+    name: "Sleep",
+    image: require("@/assets/imgs/general/sleep.png"),
+  },
 ];
