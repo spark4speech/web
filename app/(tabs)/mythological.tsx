@@ -10,17 +10,17 @@ import {
 import * as Speech from "expo-speech";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { TabParamList } from "@/app/(tabs)/_layout";
-import { desserts } from "@/constants/assets/dessert";
+import { mythological } from "@/constants/assets/mythological";
 
-const FoodScreen = () => {
+const AnimalsScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
 
   const [sentence, setSentence] = useState("");
 
-  const handlePress = (dessertName: string) => {
-    setSentence((prev) => (prev ? `${prev} ${dessertName}` : dessertName));
+  const handlePress = (mythologicalName: string) => {
+    setSentence((prev) => (prev ? `${prev} ${mythologicalName}` : mythologicalName));
 
-    Speech.speak(dessertName);
+    Speech.speak(mythologicalName);
   };
 
   return (
@@ -42,32 +42,32 @@ const FoodScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigator.navigate("Food")}
+          onPress={() => navigator.navigate("Animals")}
         >
-          <Text style={styles.buttonText}>Back to Food</Text>
+          <Text style={styles.buttonText}>Back to Animals</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Grid of desserts */}
+      {/* Grid of mythological animals */}
       <ScrollView contentContainerStyle={styles.gridContainer}>
         {Array.from({ length: 72 }).map((_, index) => {
-          const fruit = desserts[Math.floor(index / 2)];
+          const myth = mythological[Math.floor(index / 2)];
           return (
             <View key={index} style={styles.gridItem}>
-              {index % 2 === 0 && index % 24 < 12 && fruit ? (
-                <TouchableOpacity onPress={() => handlePress(fruit.name)}>
-                  <Image source={fruit.url} style={styles.icon} />
-                  <Text style={styles.iconText}>{fruit.name}</Text>
+              {index % 2 === 0 && index % 24 < 12 && myth ? (
+                <TouchableOpacity onPress={() => handlePress(myth.name)}>
+                  <Image source={myth.url} style={styles.icon} />
+                  <Text style={styles.iconText}>{myth.name}</Text>
                 </TouchableOpacity>
-              ) : index % 2 === 1 && index % 24 > 11 && fruit ? (
-                <TouchableOpacity onPress={() => handlePress(fruit.name)}>
-                  <Image source={fruit.url} style={styles.icon} />
-                  <Text style={styles.iconText}>{fruit.name}</Text>
+              ) : index % 2 === 1 && index % 24 > 11 && myth ? (
+                <TouchableOpacity onPress={() => handlePress(myth.name)}>
+                  <Image source={myth.url} style={styles.icon} />
+                  <Text style={styles.iconText}>{myth.name}</Text>
                 </TouchableOpacity>
               ) : (
                 <Image
                   source={{
-                    uri: fruit?.name == "" ? fruit?.url || "" : "",
+                    uri: myth?.name == "" ? myth?.url || "" : "",
                   }}
                   style={styles.icon}
                 />
@@ -143,4 +143,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FoodScreen;
+export default AnimalsScreen;

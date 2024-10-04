@@ -9,18 +9,24 @@ import {
 } from "react-native";
 import * as Speech from "expo-speech";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
-import { TabParamList } from "@/app/(tabs)/_layout";
-import { desserts } from "@/constants/assets/dessert";
+import {
+  TabParamList,
+  AnimalsParamList,
+  AnimalsParamListValues,
+} from "@/app/(tabs)/_layout";
+import { animals } from "@/constants/assets/animals";
+import { icons } from "@/constants/assets/categoryIcons";
 
-const FoodScreen = () => {
+// Updated AnimalScreen component
+const AnimalsScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
 
   const [sentence, setSentence] = useState("");
 
-  const handlePress = (dessertName: string) => {
-    setSentence((prev) => (prev ? `${prev} ${dessertName}` : dessertName));
+  const handlePress = (animalName: string) => {
+    setSentence((prev) => (prev ? `${prev} ${animalName}` : animalName));
 
-    Speech.speak(dessertName);
+    Speech.speak(animalName);
   };
 
   return (
@@ -42,32 +48,55 @@ const FoodScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigator.navigate("Food")}
+          onPress={() => navigator.navigate("Home")}
         >
-          <Text style={styles.buttonText}>Back to Food</Text>
+          <Text style={styles.buttonText}>Back to Home</Text>
         </TouchableOpacity>
       </View>
 
-      {/* Grid of desserts */}
+      {/* Grid of subfolders */}
+      <View style={styles.gridContainer}>
+        {Object.keys(AnimalsParamListValues).map((key) => (
+          <TouchableOpacity
+            key={key}
+            style={styles.subfolderGridItem}
+            onPress={() =>
+              navigator.navigate(
+                AnimalsParamListValues[Number(key)] as keyof AnimalsParamList
+              )
+            }
+          >
+            <Image
+              source={icons[AnimalsParamListValues[Number(key) as number]]}
+              style={styles.icon}
+            />
+            <Text style={styles.iconText}>
+              {AnimalsParamListValues[Number(key) as number]}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      {/* Grid of animal items */}
       <ScrollView contentContainerStyle={styles.gridContainer}>
         {Array.from({ length: 72 }).map((_, index) => {
-          const fruit = desserts[Math.floor(index / 2)];
+          const animal = animals[Math.floor(index / 2)];
           return (
             <View key={index} style={styles.gridItem}>
-              {index % 2 === 0 && index % 24 < 12 && fruit ? (
-                <TouchableOpacity onPress={() => handlePress(fruit.name)}>
-                  <Image source={fruit.url} style={styles.icon} />
-                  <Text style={styles.iconText}>{fruit.name}</Text>
+              {index % 2 === 0 && index % 24 < 12 && animal ? (
+                <TouchableOpacity onPress={() => handlePress(animal.name)}>
+                  <Image source={animal.url} style={styles.icon} />
+                  <Text style={styles.iconText}>{animal.name}</Text>
                 </TouchableOpacity>
-              ) : index % 2 === 1 && index % 24 > 11 && fruit ? (
-                <TouchableOpacity onPress={() => handlePress(fruit.name)}>
-                  <Image source={fruit.url} style={styles.icon} />
-                  <Text style={styles.iconText}>{fruit.name}</Text>
+              ) : index % 2 === 1 && index % 24 > 11 && animal ? (
+                <TouchableOpacity onPress={() => handlePress(animal.name)}>
+                  <Image source={animal.url} style={styles.icon} />
+                  <Text style={styles.iconText}>{animal.name}</Text>
                 </TouchableOpacity>
               ) : (
                 <Image
                   source={{
-                    uri: fruit?.name == "" ? fruit?.url || "" : "",
+                    uri: animal?.name == "" ? animal?.url || "" : "",
                   }}
                   style={styles.icon}
                 />
@@ -130,6 +159,17 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingTop: 2,
   },
+  subfolderGridItem: {
+    width: "7.33%",
+    marginBottom: 10,
+    marginHorizontal: 4,
+    borderWidth: 1,
+    borderColor: "#003366",
+    borderRadius: 5,
+    paddingTop: 2,
+    marginVertical: 5,
+    alignItems: "flex-start",
+  },
   icon: {
     width: 50,
     height: 50,
@@ -143,4 +183,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FoodScreen;
+export default AnimalsScreen;
