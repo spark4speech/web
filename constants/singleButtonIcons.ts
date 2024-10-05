@@ -87,4 +87,53 @@ export const singleButtonIcons: { name: string; image: string }[] = [
     name: "Sleep",
     image: require("@/assets/imgs/general/sleep.png"),
   },
+  {
+    name: "Play",
+    image: require("@/assets/imgs/general/play.png"),
+  },
+  {
+    name: "Go",
+    image: require("@/assets/imgs/general/go.png"),
+  },
+  {
+    name: "Have",
+    image: require("@/assets/imgs/general/have.png"),
+  },
+  {
+    name: "He",
+    image: require("@/assets/imgs/general/he.png"),
+  },
+  {
+    name: "She",
+    image: require("@/assets/imgs/general/she.png"),
+  },
+  {
+    name: "See",
+    image: require("@/assets/imgs/general/see.png"),
+  },
+  {
+    name: "Hear",
+    image: require("@/assets/imgs/general/hear.png"),
+  },
+  {
+    name: "Smell",
+    image: require("@/assets/imgs/general/smell.png"),
+  },
+  {
+    name: "Taste",
+    image: require("@/assets/imgs/general/taste.png"),
+  },
+  {
+    name: "Touch",
+    image: require("@/assets/imgs/general/touch.png"),
+  },
+  {
+    name: "Like",
+    image: require("@/assets/imgs/general/like.png"),
+  },
+  {
+    name: "Dislike",
+    image: require("@/assets/imgs/general/dislike.png"),
+  },
+
 ];

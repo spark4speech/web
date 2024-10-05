@@ -8,7 +8,7 @@ export const icons: Icons = {
   Fruit: require("@/assets/imgs/foods/fruits/apple.png"),
   Vegetable: require("@/assets/imgs/foods/vegetables/zani.png"),
   Dessert: require("@/assets/imgs/foods/desserts/shortcake.png"),
-  Clothing: require("@/assets/imgs/clothing/shirt.png"),
+  Clothing: require("@/assets/imgs/clothing/t-shirt.png"),
   Colors: require("@/assets/imgs/colors/rainbow2.png"),
   Shapes: require("@/assets/imgs/shapes/circle.png"),
   Transportation: require("@/assets/imgs/transportation/car.png"),

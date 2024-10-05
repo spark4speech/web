@@ -1,7 +1,7 @@
 export const clothing = [
   {
     name: "Clothing",
-    url: require("@/assets/imgs/clothing/shirt.png"),
+    url: require("@/assets/imgs/clothing/t-shirt.png"),
   },
   {
     name: "Backpack",
