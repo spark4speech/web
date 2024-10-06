@@ -32,6 +32,8 @@ import ReptileScreen from "./reptile-amphibian";
 import DirectionsScreen from "./directions";
 import PlacesScreen from "./places";
 import OccupationsScreen from "./occupations";
+import SchoolScreen from "./school";
+import BathroomScreen from "./bathroom";
 
 type TabParamList = {
   Home: undefined;
@@ -64,6 +66,8 @@ type TabParamList = {
   Directions: undefined;
   Places: undefined;
   Occupations: undefined;
+  School: undefined;
+  Bathroom: undefined;
 };
 
 type FoodParamList = {
@@ -102,9 +106,11 @@ const TabParamListValues = [
   "Directions",
   "Places",
   "Occupations",
+  "School",
+  "Bathroom",
 ];
 const FoodParamListValues = ["Fruit", "Vegetable", "Dessert"];
-const AnimalsParamListValues = ["Bird", "Bug", "Farm", "Forest", "Jungle", "Mythological", "Water", "Other", "Pet", "Prehistoric", "Reptile"];
+const AnimalsParamListValues = ["Bird", "Bug", "Farm", "Forest", "Jungle", "Mythological", "Water", "Pet", "Prehistoric", "Reptile", "Other"];
 
 const Tab = createBottomTabNavigator<TabParamList>();
 
@@ -478,6 +484,32 @@ export default function TabNavigator() {
       <Tab.Screen
         name="Occupations"
         component={OccupationsScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="School"
+        component={SchoolScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Bathroom"
+        component={BathroomScreen}
         options={{
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon

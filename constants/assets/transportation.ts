@@ -48,6 +48,10 @@ export const transportation = [
     url: require("@/assets/imgs/transportation/police-car.png"),
   },
   {
+    name: "School Bus",
+    url: require("@/assets/imgs/transportation/school-bus.png"),
+  },
+  {
     name: "Scooter",
     url: require("@/assets/imgs/transportation/scooter.png"),
   },

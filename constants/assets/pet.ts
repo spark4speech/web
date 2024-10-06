@@ -1,5 +1,9 @@
 export const pet = [
   {
+    name: "Pet",
+    url: require("@/assets/imgs/animals/pet/dog2.png"),
+  },
+  {
     name: "Cat",
     url: require("@/assets/imgs/animals/pet/cat.png"),
   },

@@ -1,7 +1,7 @@
 export const shapes = [
   {
     name: "Shapes",
-    url: require("@/assets/imgs/shapes/circle.png"),
+    url: require("@/assets/imgs/shapes/circle2.png"),
   },
   {
     name: "Square",

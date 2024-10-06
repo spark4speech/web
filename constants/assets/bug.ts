@@ -1,5 +1,9 @@
 export const bug = [
   {
+    name: "Bug",
+    url: require("@/assets/imgs/animals/bug/beetle.png"),
+  },
+  {
     name: "Ant",
     url: require("@/assets/imgs/animals/bug/ant.png"),
   },
