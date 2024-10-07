@@ -9,6 +9,7 @@ import FoodScreen from "./food";
 import FruitScreen from "./fruit";
 import VegetableScreen from "./vegetables";
 import DessertScreen from "./dessert";
+import UtensilsScreen from "./utensils";
 import ClothingScreen from "./clothing";
 import ColorScreen from "./colors";
 import ShapeScreen from "./shapes";
@@ -43,6 +44,7 @@ type TabParamList = {
   Fruit: undefined;
   Vegetable: undefined;
   Dessert: undefined;
+  Utensils: undefined;
   Clothing: undefined;
   Colors: undefined;
   Shapes: undefined;
@@ -74,6 +76,7 @@ type FoodParamList = {
   Fruit: undefined;
   Vegetable: undefined;
   Dessert: undefined;
+  Utensils: undefined;
 };
 
 type AnimalsParamList = {
@@ -109,7 +112,7 @@ const TabParamListValues = [
   "School",
   "Bathroom",
 ];
-const FoodParamListValues = ["Fruit", "Vegetable", "Dessert"];
+const FoodParamListValues = ["Fruit", "Vegetable", "Dessert", "Utensils"];
 const AnimalsParamListValues = ["Bird", "Bug", "Farm", "Forest", "Jungle", "Mythological", "Water", "Pet", "Prehistoric", "Reptile", "Other"];
 
 const Tab = createBottomTabNavigator<TabParamList>();
@@ -185,6 +188,19 @@ export default function TabNavigator() {
       <Tab.Screen
         name="Dessert"
         component={DessertScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Utensils"
+        component={UtensilsScreen}
         options={{
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
