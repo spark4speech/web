@@ -48,6 +48,10 @@ export const places = [
     url: require("@/assets/imgs/places/desert.png"),
   },
   {
+    name: "Doctor's Office",
+    url: require("@/assets/imgs/places/doctors-office.png"),
+  },
+  {
     name: "Factory",
     url: require("@/assets/imgs/places/factory.png"),
   },
@@ -68,12 +72,24 @@ export const places = [
     url: require("@/assets/imgs/places/island.png"),
   },
   {
+    name: "Library",
+    url: require("@/assets/imgs/school/books.png"),
+  },
+  {
+    name: "Mall",
+    url: require("@/assets/imgs/places/mall.png"),
+  },
+  {
     name: "Mosque",
     url: require("@/assets/imgs/places/mosque.png"),
   },
   {
     name: "Mountains",
     url: require("@/assets/imgs/places/mountains.png"),
+  },
+  {
+    name: "Movie Theater",
+    url: require("@/assets/imgs/places/movie-theater.png"),
   },
   {
     name: "National Park",
@@ -98,6 +114,10 @@ export const places = [
   {
     name: "Stadium",
     url: require("@/assets/imgs/places/stadium.png"),
+  },
+  {
+    name: "Swimming Pool",
+    url: require("@/assets/imgs/places/swimming-pool.png"),
   },
   {
     name: "Synagogue",

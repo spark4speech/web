@@ -56,10 +56,6 @@ export const school = [
     url: require("@/assets/imgs/school/folder.png"),
   },
   {
-    name: "Globe",
-    url: require("@/assets/imgs/school/globe.png"),
-  },
-  {
     name: "Goggles",
     url: require("@/assets/imgs/school/goggles.png"),
   },
