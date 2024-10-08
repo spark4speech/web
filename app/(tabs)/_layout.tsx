@@ -5,6 +5,7 @@ import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import HomeScreen from "./index";
 import SettingsScreen from "./settings";
 import EmotionsScreen from "./emotions";
+import AdjectivesScreen from "./adjectives";
 import FoodScreen from "./food";
 import FruitScreen from "./fruit";
 import VegetableScreen from "./vegetables";
@@ -40,6 +41,7 @@ type TabParamList = {
   Home: undefined;
   Settings: undefined;
   Emotions: undefined;
+  Adjectives: undefined;
   Food: undefined;
   Fruit: undefined;
   Vegetable: undefined;
@@ -96,6 +98,7 @@ type AnimalsParamList = {
 const TabParamListValues = [
   "Home",
   "Emotions",
+  "Adjectives",
   "Food",
   "Clothing",
   "Colors",
@@ -136,6 +139,19 @@ export default function TabNavigator() {
       <Tab.Screen
         name="Emotions"
         component={EmotionsScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Adjectives"
+        component={AdjectivesScreen}
         options={{
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
