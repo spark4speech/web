@@ -26,7 +26,7 @@ const IndexScreen = () => {
     isButton?: boolean
   ) => {
     if (!isButton) {
-      navigation.navigate(destination as keyof TabParamList);
+      navigation.navigate(destination as keyof TabParamList | any);
     } else {
       setSentence((prev) =>
         prev ? `${prev} ${destination as string}` : (destination as string)
