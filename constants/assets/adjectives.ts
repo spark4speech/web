@@ -12,6 +12,10 @@ export const adjectives = [
     url: require("@/assets/imgs/adjectives/okay.png"),
   },
   {
+    name: "Colorful",
+    url: require("@/assets/imgs/colors/rainbow.png"),
+  },
+  {
     name: "Big",
     url: require("@/assets/imgs/adjectives/big.png"),
   },

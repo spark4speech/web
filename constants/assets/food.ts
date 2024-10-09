@@ -20,10 +20,6 @@ export const foods = [
     url: require("@/assets/imgs/foods/egg.png"),
   },
   {
-    name: "Egg (Alternative)",
-    url: require("@/assets/imgs/foods/egg2.png"),
-  },
-  {
     name: "Fries",
     url: require("@/assets/imgs/foods/fries.png"),
   },
