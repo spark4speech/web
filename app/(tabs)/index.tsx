@@ -52,7 +52,7 @@ const IndexScreen = () => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
-            setModalVisible(true);
+            navigation.navigate("Settings");
           }}
         >
           <Text style={styles.buttonText}>Settings</Text>
