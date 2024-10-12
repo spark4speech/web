@@ -1,5 +1,41 @@
 export const singleButtonIcons: { name: string; image: string }[] = [
   {
+    name: "I",
+    image: require("@/assets/imgs/general/i.png"),
+  },
+  {
+    name: "Me",
+    image: require("@/assets/imgs/general/me.png"),
+  },
+  {
+    name: "My",
+    image: require("@/assets/imgs/general/my.png"),
+  },
+  {
+    name: "He",
+    image: require("@/assets/imgs/general/he.png"),
+  },
+  {
+    name: "She",
+    image: require("@/assets/imgs/general/she.png"),
+  },
+  {
+    name: "You",
+    image: require("@/assets/imgs/general/you.png"),
+  },
+  {
+    name: "They",
+    image: require("@/assets/imgs/general/they.png"),
+  },
+  {
+    name: "We",
+    image: require("@/assets/imgs/general/we.png"),
+  },
+  {
+    name: "It",
+    image: require("@/assets/imgs/general/it.png"),
+  },
+  {
     name: "The",
     image: require("@/assets/imgs/general/sorry.png"),
   },
@@ -98,14 +134,6 @@ export const singleButtonIcons: { name: string; image: string }[] = [
   {
     name: "Have",
     image: require("@/assets/imgs/general/have.png"),
-  },
-  {
-    name: "He",
-    image: require("@/assets/imgs/general/he.png"),
-  },
-  {
-    name: "She",
-    image: require("@/assets/imgs/general/she.png"),
   },
   {
     name: "See",

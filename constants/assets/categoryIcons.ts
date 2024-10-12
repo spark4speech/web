@@ -4,6 +4,7 @@ type Icons = {
 
 export const icons: Icons = {
   Emotions: require("@/assets/imgs/emotions/happy.png"),
+  Family: require("@/assets/imgs/family/family.png"),
   Adjectives: require("@/assets/imgs/adjectives/loud.png"),
   Food: require("@/assets/imgs/foods/hamburger.png"),
   Fruit: require("@/assets/imgs/foods/fruits/apple.png"),
