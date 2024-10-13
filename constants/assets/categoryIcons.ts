@@ -12,6 +12,7 @@ export const icons: Icons = {
   Breakfast: require("@/assets/imgs/foods/breakfast/waffle.png"),
   Dessert: require("@/assets/imgs/foods/desserts/shortcake.png"),
   Utensils: require("@/assets/imgs/foods/utensils/fork.png"),
+  Drink: require("@/assets/imgs/drink/water.png"),
   Clothing: require("@/assets/imgs/clothing/t-shirt.png"),
   Colors: require("@/assets/imgs/colors/rainbow2.png"),
   Shapes: require("@/assets/imgs/shapes/circle2.png"),

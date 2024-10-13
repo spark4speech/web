@@ -10,17 +10,17 @@ import {
 import * as Speech from "expo-speech";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { TabParamList } from "@/app/(tabs)/_layout";
-import { drinks } from "@/constants/assets/drinks";
+import { drink } from "@/constants/assets/drink";
 
-const DrinksScreen = () => {
+const DrinkScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
 
   const [sentence, setSentence] = useState("");
 
-  const handlePress = (drinkName: string) => {
-    setSentence((prev) => (prev ? `${prev} ${drinkName}` : drinkName));
+  const handlePress = (drinkScreen: string) => {
+    setSentence((prev) => (prev ? `${prev} ${drinkScreen}` : drinkScreen));
 
-    Speech.speak(drinkName);
+    Speech.speak(drinkScreen);
   };
 
   return (
@@ -51,23 +51,23 @@ const DrinksScreen = () => {
       {/* Grid of Emotions */}
       <ScrollView contentContainerStyle={styles.gridContainer}>
         {Array.from({ length: 72 }).map((_, index) => {
-          const drink = drinks[Math.floor(index / 2)];
+          const dir = drink[Math.floor(index / 2)];
           return (
             <View key={index} style={styles.gridItem}>
-              {index % 2 === 0 && index % 24 < 12 && drink ? (
-                <TouchableOpacity onPress={() => handlePress(drink.name)}>
-                  <Image source={drink.url} style={styles.icon} />
-                  <Text style={styles.iconText}>{drink.name}</Text>
+              {index % 2 === 0 && index % 24 < 12 && dir ? (
+                <TouchableOpacity onPress={() => handlePress(dir.name)}>
+                  <Image source={dir.url} style={styles.icon} />
+                  <Text style={styles.iconText}>{dir.name}</Text>
                 </TouchableOpacity>
-              ) : index % 2 === 1 && index % 24 > 11 && drink ? (
-                <TouchableOpacity onPress={() => handlePress(drink.name)}>
-                  <Image source={drink.url} style={styles.icon} />
-                  <Text style={styles.iconText}>{drink.name}</Text>
+              ) : index % 2 === 1 && index % 24 > 11 && dir ? (
+                <TouchableOpacity onPress={() => handlePress(dir.name)}>
+                  <Image source={dir.url} style={styles.icon} />
+                  <Text style={styles.iconText}>{dir.name}</Text>
                 </TouchableOpacity>
               ) : (
                 <Image
                   source={{
-                    uri: drink?.name == "" ? drink?.url || "" : "",
+                    uri: dir?.name == "" ? dir?.url || "" : "",
                   }}
                   style={styles.icon}
                 />
@@ -143,4 +143,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DrinksScreen;
+export default DrinkScreen;
