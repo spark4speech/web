@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -11,16 +11,17 @@ import * as Speech from "expo-speech";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { TabParamList } from "@/app/(tabs)/_layout";
 import { body } from "@/constants/assets/body";
+import { SentenceContext } from "@/contexts/SentenceContext";
 
 const BodyScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
 
-  const [sentence, setSentence] = useState("");
+  const { sentence, setSentence } = useContext(SentenceContext);
 
-  const handlePress = (bodyName: string) => {
-    setSentence((prev) => (prev ? `${prev} ${bodyName}` : bodyName));
+  const handlePress = (destination: string) => {
+    setSentence(sentence ? `${sentence} ${destination as string}` : destination as string);
 
-    Speech.speak(bodyName);
+    Speech.speak(destination);
   };
 
   return (

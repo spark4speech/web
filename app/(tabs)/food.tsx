@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -16,17 +16,18 @@ import {
 } from "@/app/(tabs)/_layout";
 import { foods } from "@/constants/assets/food";
 import { icons } from "@/constants/assets/categoryIcons";
+import { SentenceContext } from "@/contexts/SentenceContext";
 
 // Updated FoodScreen component
 const FoodScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
 
-  const [sentence, setSentence] = useState("");
+  const { sentence, setSentence } = useContext(SentenceContext);
 
-  const handlePress = (foodName: string) => {
-    setSentence((prev) => (prev ? `${prev} ${foodName}` : foodName));
+  const handlePress = (destination: string) => {
+    setSentence(sentence ? `${sentence} ${destination as string}` : destination as string);
 
-    Speech.speak(foodName);
+    Speech.speak(destination);
   };
 
   return (

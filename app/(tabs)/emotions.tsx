@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext } from "react";
 import {
   View,
   Text,
@@ -11,16 +11,17 @@ import * as Speech from "expo-speech";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { TabParamList } from "@/app/(tabs)/_layout";
 import { emotions } from "@/constants/assets/emotions";
+import { SentenceContext } from "@/contexts/SentenceContext";
 
 const EmotionsScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
 
-  const [sentence, setSentence] = useState("");
+  const { sentence, setSentence } = useContext(SentenceContext);
 
-  const handlePress = (emotionName: string) => {
-    setSentence((prev) => (prev ? `${prev} ${emotionName}` : emotionName));
+  const handlePress = (destination: string) => {
+    setSentence(sentence ? `${sentence} ${destination as string}` : destination as string);
 
-    Speech.speak(emotionName);
+    Speech.speak(destination);
   };
 
   return (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -11,16 +11,17 @@ import * as Speech from "expo-speech";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { TabParamList } from "@/app/(tabs)/_layout";
 import { drink } from "@/constants/assets/drink";
+import { SentenceContext } from "@/contexts/SentenceContext";
 
 const DrinkScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
 
-  const [sentence, setSentence] = useState("");
+  const { sentence, setSentence } = useContext(SentenceContext);
 
-  const handlePress = (drinkScreen: string) => {
-    setSentence((prev) => (prev ? `${prev} ${drinkScreen}` : drinkScreen));
+  const handlePress = (destination: string) => {
+    setSentence(sentence ? `${sentence} ${destination as string}` : destination as string);
 
-    Speech.speak(drinkScreen);
+    Speech.speak(destination);
   };
 
   return (

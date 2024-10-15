@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -16,17 +16,18 @@ import {
 } from "@/app/(tabs)/_layout";
 import { animals } from "@/constants/assets/animals";
 import { icons } from "@/constants/assets/categoryIcons";
+import { SentenceContext } from "@/contexts/SentenceContext";
 
 // Updated AnimalScreen component
 const AnimalsScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
 
-  const [sentence, setSentence] = useState("");
+  const { sentence, setSentence } = useContext(SentenceContext);
 
-  const handlePress = (animalName: string) => {
-    setSentence((prev) => (prev ? `${prev} ${animalName}` : animalName));
+  const handlePress = (destination: string) => {
+    setSentence(sentence ? `${sentence} ${destination as string}` : destination as string);
 
-    Speech.speak(animalName);
+    Speech.speak(destination);
   };
 
   return (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -11,16 +11,17 @@ import * as Speech from "expo-speech";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { TabParamList } from "@/app/(tabs)/_layout";
 import { transportation } from "@/constants/assets/transportation";
+import { SentenceContext } from "@/contexts/SentenceContext";
 
 const TransportationScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
 
-  const [sentence, setSentence] = useState("");
+  const { sentence, setSentence } = useContext(SentenceContext);
 
-  const handlePress = (transportationName: string) => {
-    setSentence((prev) => (prev ? `${prev} ${transportationName}` : transportationName));
+  const handlePress = (destination: string) => {
+    setSentence(sentence ? `${sentence} ${destination as string}` : destination as string);
 
-    Speech.speak(transportationName);
+    Speech.speak(destination);
   };
 
   return (
