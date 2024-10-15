@@ -16,7 +16,7 @@ export const SentenceProvider = ({ children }: { children: ReactNode }) => {
   const [sentence, setSentence] = useState<string>("");
 
   const updateSentence = (newSentence: string) => {
-    setSentence(newSentence);
+    setSentence(newSentence.charAt(0).toUpperCase() + newSentence.slice(1).toLowerCase());
   };
 
   return (
