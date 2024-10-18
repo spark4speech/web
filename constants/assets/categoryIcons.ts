@@ -7,6 +7,7 @@ export const icons: Icons = {
   Family: require("@/assets/imgs/family/family.png"),
   Actions: require("@/assets/imgs/adjectives/fast.png"),
   Adjectives: require("@/assets/imgs/adjectives/loud.png"),
+  Adverbs: require("@/assets/imgs/adjectives/loud.png"),
   Food: require("@/assets/imgs/foods/hamburger.png"),
   Fruit: require("@/assets/imgs/foods/fruits/apple.png"),
   Vegetable: require("@/assets/imgs/foods/vegetables/zani.png"),
