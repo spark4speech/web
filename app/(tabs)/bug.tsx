@@ -13,7 +13,7 @@ import { TabParamList } from "@/app/(tabs)/_layout";
 import { bug } from "@/constants/assets/bug";
 import { SentenceContext } from "@/contexts/SentenceContext";
 
-const AnimalsScreen = () => {
+const bugScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
 
   const { sentence, setSentence } = useContext(SentenceContext);
@@ -24,23 +24,71 @@ const AnimalsScreen = () => {
     Speech.speak(destination);
   };
 
+  const handleBackspace = () => {
+    const words = sentence.trim().split(" ");
+    words.pop();
+    setSentence(words.join(" "));
+  };
+  
+  const handleClear = () => {
+    setSentence("");
+  };
+
+  const handleSpeakSentence = () => {
+    if (sentence) {
+      Speech.speak(sentence, {
+        rate: 0.7,
+      });
+    }
+  };
+
   return (
     <View style={styles.container}>
       {/* Text Area */}
-      <View style={styles.topArea}>
+      <TouchableOpacity style={styles.topArea} onPress={handleSpeakSentence}>
         <Text style={styles.placeholderText}>
           {sentence || "Start speaking...."}
         </Text>
-      </View>
+
+        {/* Backspace Button */}
+        <TouchableOpacity
+          style={styles.backspaceButton}
+          onPress={handleBackspace}
+        >
+          <Text style={styles.backspaceText}>⌫</Text>
+        </TouchableOpacity>
+        
+        {/* Clear Button */}
+        <TouchableOpacity
+          style={styles.clearButton}
+          onPress={handleClear}
+        >
+          <Image
+            source={{
+              uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Trash_font_awesome.svg/1024px-Trash_font_awesome.svg.png",
+            }}
+            style={styles.clearImage}
+          />
+          <Text style={styles.clearText}>Clear</Text>
+        </TouchableOpacity>
+      </TouchableOpacity>
 
       {/* Blue Bar with Buttons */}
-      <View style={styles.blueBar}>
+      <View style={styles.orangeBar}>
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigator.navigate("Settings")}
         >
           <Text style={styles.buttonText}>Settings</Text>
         </TouchableOpacity>
+        
+        <TouchableOpacity onPress={handleSpeakSentence}>
+          <Image  
+            source={require("@/assets/images/spark-black-on-orange.png")}
+            style={{ width: 160, height: 160, marginBottom: -3, marginRight: -83  }}
+          />
+        </TouchableOpacity>
+
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigator.navigate("Animals")}
@@ -49,26 +97,26 @@ const AnimalsScreen = () => {
         </TouchableOpacity>
       </View>
 
-      {/* Grid of bugs */}
+      {/* Grid of Emotions */}
       <ScrollView contentContainerStyle={styles.gridContainer}>
         {Array.from({ length: 72 }).map((_, index) => {
-          const bugha = bug[Math.floor(index / 2)];
+          const item = bug[Math.floor(index / 2)];
           return (
             <View key={index} style={styles.gridItem}>
-              {index % 2 === 0 && index % 24 < 12 && bugha ? (
-                <TouchableOpacity onPress={() => handlePress(bugha.name)}>
-                  <Image source={bugha.url} style={styles.icon} />
-                  <Text style={styles.iconText}>{bugha.name}</Text>
+              {index % 2 === 0 && index % 24 < 12 && item ? (
+                <TouchableOpacity onPress={() => handlePress(item.name)}>
+                  <Image source={item.url} style={styles.icon} />
+                  <Text style={styles.iconText}>{item.name}</Text>
                 </TouchableOpacity>
-              ) : index % 2 === 1 && index % 24 > 11 && bugha ? (
-                <TouchableOpacity onPress={() => handlePress(bugha.name)}>
-                  <Image source={bugha.url} style={styles.icon} />
-                  <Text style={styles.iconText}>{bugha.name}</Text>
+              ) : index % 2 === 1 && index % 24 > 11 && item ? (
+                <TouchableOpacity onPress={() => handlePress(item.name)}>
+                  <Image source={item.url} style={styles.icon} />
+                  <Text style={styles.iconText}>{item.name}</Text>
                 </TouchableOpacity>
               ) : (
                 <Image
                   source={{
-                    uri: bugha?.name == "" ? bugha?.url || "" : "",
+                    uri: item?.name == "" ? item?.url || "" : "",
                   }}
                   style={styles.icon}
                 />
@@ -91,16 +139,54 @@ const styles = StyleSheet.create({
     backgroundColor: "#f0f0f0",
     justifyContent: "center",
     alignItems: "flex-start",
+    minHeight: 80,
   },
   placeholderText: {
-    fontSize: 18,
+    fontSize: 21,
     color: "#333",
     marginLeft: 20,
     fontWeight: "bold",
   },
-  blueBar: {
-    height: 50,
-    backgroundColor: "#007bff",
+  backspaceButton: {
+    position: "absolute",
+    right: 160,
+    width: 60,
+    height: 60,
+    borderRadius: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ccc",
+    marginLeft: 10,
+  },
+  backspaceText: {
+    fontSize: 25,
+    color: "#333",
+  },
+  clearButton: {
+    position: "absolute",
+    right: 20,
+    width: 130,
+    height: 60,
+    borderRadius: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#f66",
+    marginLeft: 10,
+    flexDirection: "row",
+    gap: 6,
+  },
+  clearImage: {
+    width: 24,
+    height: 24,
+    tintColor: "#fff",
+  },
+  clearText: {
+    fontSize: 23,
+    color: "#fff",
+  },
+  orangeBar: {
+    height: 70,
+    backgroundColor: "#ff914d",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -108,13 +194,13 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 10,
-    borderColor: "#fff",
+    borderColor: "#221F17",
     borderWidth: 1,
     borderRadius: 10,
   },
   buttonText: {
-    color: "#fff",
-    fontSize: 16,
+    color: "#221F17",
+    fontSize: 19,
   },
   gridContainer: {
     flexDirection: "row",
@@ -144,4 +230,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AnimalsScreen;
+export default bugScreen;

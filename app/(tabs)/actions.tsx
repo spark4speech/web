@@ -83,9 +83,9 @@ const ActionsScreen = () => {
         </TouchableOpacity>
         
         <TouchableOpacity onPress={handleSpeakSentence}>
-          <Image
+          <Image  
             source={require("@/assets/images/spark-black-on-orange.png")}
-            style={{ width: 160, height: 160, marginBottom: -3 }}
+            style={{ width: 160, height: 160, marginBottom: -3, marginRight: -69  }}
           />
         </TouchableOpacity>
 
