@@ -18,6 +18,7 @@ export const icons: Icons = {
   Clothing: require("@/assets/imgs/clothing/t-shirt.png"),
   Colors: require("@/assets/imgs/colors/rainbow2.png"),
   Shapes: require("@/assets/imgs/shapes/circle2.png"),
+  Time: require("@/assets/imgs/time/time.png"),
   Transportation: require("@/assets/imgs/transportation/car.png"),
   Weather: require("@/assets/imgs/weather/sunny.png"),
   Body: require("@/assets/imgs/body/body.png"),

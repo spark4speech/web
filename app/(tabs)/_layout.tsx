@@ -19,6 +19,7 @@ import DrinkScreen from "./drink";
 import ClothingScreen from "./clothing";
 import ColorScreen from "./colors";
 import ShapeScreen from "./shapes";
+import TimeScreen from "./time";
 import TransportationScreen from "./transportation";
 import WeatherScreen from "./weather";
 import BodyScreen from "./body";
@@ -60,6 +61,7 @@ type TabParamList = {
   Clothing: undefined;
   Colors: undefined;
   Shapes: undefined;
+  Time: undefined;
   Transportation: undefined;
   Weather: undefined;
   Body: undefined;
@@ -118,6 +120,7 @@ const TabParamListValues = [
   "Clothing",
   "Colors",
   "Shapes",
+  "Time",
   "Transportation",
   "Weather",
   "Body",
@@ -336,6 +339,19 @@ export default function TabNavigator() {
       <Tab.Screen
         name="Shapes"
         component={ShapeScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Time"
+        component={TimeScreen}
         options={{
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon

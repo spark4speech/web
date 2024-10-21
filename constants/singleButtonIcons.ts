@@ -92,20 +92,8 @@ export const singleButtonIcons: { name: string; image: string }[] = [
     image: require("@/assets/imgs/general/goodbye.png"),
   },
   {
-    name: "Time",
-    image: require("@/assets/imgs/general/time.png"),
-  },
-  {
     name: "Home",
     image: require("@/assets/imgs/general/home.png"),
-  },
-  {
-    name: "Day",
-    image: require("@/assets/imgs/general/day.png"),
-  },
-  {
-    name: "Night",
-    image: require("@/assets/imgs/general/night.png"),
   },
   {
     name: "Good",
