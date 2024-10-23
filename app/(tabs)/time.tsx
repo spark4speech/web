@@ -12,16 +12,18 @@ import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { TabParamList } from "@/app/(tabs)/_layout";
 import { time } from "@/constants/assets/time";
 import { SentenceContext } from "@/contexts/SentenceContext";
+import { useSettings } from "@/contexts/SettingsContext";
 
 const timeScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
 
   const { sentence, setSentence } = useContext(SentenceContext);
+  const { volume, voiceSpeed, voicePitch } = useSettings();
 
   const handlePress = (destination: string) => {
     setSentence(sentence ? `${sentence} ${destination as string}` : destination as string);
 
-    Speech.speak(destination);
+    Speech.speak(destination, { rate: voiceSpeed, pitch: voicePitch, volume });
   };
 
   const handleBackspace = () => {

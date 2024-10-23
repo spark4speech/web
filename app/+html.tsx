@@ -1,4 +1,6 @@
 import { SentenceProvider } from "@/contexts/SentenceContext";
+import { SettingsProvider } from "@/contexts/SettingsContext";
+import { RootSiblingParent } from "react-native-root-siblings";
 import { ScrollViewStyleReset } from "expo-router/html";
 import { type PropsWithChildren } from "react";
 
@@ -28,9 +30,13 @@ export default function Root({ children }: PropsWithChildren) {
         {/* Add any additional <head> elements that you want globally available on web... */}
       </head>
       <body>
-        <SentenceProvider>
-          {children}
-        </SentenceProvider>
+        <RootSiblingParent>
+          <SentenceProvider>
+            <SettingsProvider>
+              {children}
+            </SettingsProvider>
+          </SentenceProvider>
+        </RootSiblingParent>
       </body>
     </html>
   );

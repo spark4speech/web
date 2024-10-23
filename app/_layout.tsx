@@ -1,4 +1,6 @@
 import { SentenceProvider } from "@/contexts/SentenceContext";
+import { SettingsProvider } from "@/contexts/SettingsContext";
+import { RootSiblingParent } from "react-native-root-siblings";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -22,10 +24,14 @@ export default function RootLayout() {
   }
 
   return (
-    <SentenceProvider>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
-    </SentenceProvider>
+    <RootSiblingParent>
+      <SentenceProvider>
+        <SettingsProvider>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          </Stack>
+        </SettingsProvider>
+      </SentenceProvider>
+    </RootSiblingParent>
   );
 }

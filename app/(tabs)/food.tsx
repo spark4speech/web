@@ -17,17 +17,19 @@ import {
 import { foods } from "@/constants/assets/food";
 import { icons } from "@/constants/assets/categoryIcons";
 import { SentenceContext } from "@/contexts/SentenceContext";
+import { useSettings } from "@/contexts/SettingsContext";
 
 // Updated FoodScreen component
 const FoodScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
 
   const { sentence, setSentence } = useContext(SentenceContext);
+  const { volume, voiceSpeed, voicePitch } = useSettings();
 
   const handlePress = (destination: string) => {
     setSentence(sentence ? `${sentence} ${destination as string}` : destination as string);
 
-    Speech.speak(destination);
+    Speech.speak(destination, { rate: voiceSpeed, pitch: voicePitch, volume });
   };
 
   const handleBackspace = () => {

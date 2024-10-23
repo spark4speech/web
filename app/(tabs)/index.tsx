@@ -14,6 +14,7 @@ import * as Speech from "expo-speech";
 import { icons } from "@/constants/assets/categoryIcons";
 import { singleButtonIcons } from "@/constants/singleButtonIcons";
 import { SentenceContext } from "@/contexts/SentenceContext";
+import { useSettings } from "@/contexts/SettingsContext";
 
 const DEFAULT_ICON = "https://cloud-nhes44ias-hack-club-bot.vercel.app/0qm.jpg";
 
@@ -21,6 +22,7 @@ const IndexScreen = () => {
   const navigation = useNavigation<NavigationProp<TabParamList>>();
   const [modalVisible, setModalVisible] = useState(false);
   const { sentence, setSentence } = useContext(SentenceContext);
+  const { volume, voiceSpeed, voicePitch } = useSettings();
 
   const handlePress = (
     destination: keyof TabParamList | string,
@@ -30,7 +32,7 @@ const IndexScreen = () => {
       navigation.navigate(destination as keyof TabParamList | any);
     } else {
       setSentence(sentence ? `${sentence} ${destination as string}` : destination as string);
-      Speech.speak(destination as string);
+      Speech.speak(destination as string, { rate: voiceSpeed, pitch: voicePitch, volume });
     }
   };
 

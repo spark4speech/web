@@ -12,16 +12,18 @@ import { useNavigation, NavigationProp } from "@react-navigation/native";
 import { TabParamList } from "@/app/(tabs)/_layout";
 import { water } from "@/constants/assets/water";
 import { SentenceContext } from "@/contexts/SentenceContext";
+import { useSettings } from "@/contexts/SettingsContext";
 
 const waterScreen = () => {
   const navigator = useNavigation<NavigationProp<TabParamList>>();
 
   const { sentence, setSentence } = useContext(SentenceContext);
+  const { volume, voiceSpeed, voicePitch } = useSettings();
 
   const handlePress = (destination: string) => {
     setSentence(sentence ? `${sentence} ${destination as string}` : destination as string);
 
-    Speech.speak(destination);
+    Speech.speak(destination, { rate: voiceSpeed, pitch: voicePitch, volume });
   };
 
   const handleBackspace = () => {
