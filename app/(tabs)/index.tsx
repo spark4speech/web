@@ -15,6 +15,7 @@ import { icons } from "@/constants/assets/categoryIcons";
 import { singleButtonIcons } from "@/constants/singleButtonIcons";
 import { SentenceContext } from "@/contexts/SentenceContext";
 import { useSettings } from "@/contexts/SettingsContext";
+import OnScreenKeyboard from "@/components/OnScreenKeyboard";
 
 const DEFAULT_ICON = "https://cloud-nhes44ias-hack-club-bot.vercel.app/0qm.jpg";
 
@@ -23,6 +24,7 @@ const IndexScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const { sentence, setSentence } = useContext(SentenceContext);
   const { volume, voiceSpeed, voicePitch } = useSettings();
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
   const handlePress = (
     destination: keyof TabParamList | string,
@@ -32,14 +34,23 @@ const IndexScreen = () => {
       navigation.navigate(destination as keyof TabParamList | any);
     } else {
       setSentence(sentence ? `${sentence} ${destination as string}` : destination as string);
-      Speech.speak(destination as string, { rate: voiceSpeed, pitch: voicePitch, volume });
+      Speech.speak(destination.toLowerCase() as string, { rate: voiceSpeed, pitch: voicePitch, volume });
     }
+  };
+  
+  const handleKeyPress = (key: string) => {
+    setSentence(sentence ? `${sentence}${key}` : key);
+    Speech.speak(key.toLowerCase(), { rate: voiceSpeed, pitch: voicePitch, volume });
   };
 
   const handleBackspace = () => {
-    const words = sentence.trim().split(" ");
-    words.pop();
-    setSentence(words.join(" "));
+    if (isKeyboardVisible) {
+      setSentence(sentence.substring(0, sentence.length - 1));
+      } else {
+      const words = sentence.trim().split(" ");
+      words.pop();
+      setSentence(words.join(" "));
+    }
   };
   
   const handleClear = () => {
@@ -52,6 +63,14 @@ const IndexScreen = () => {
         rate: 0.7,
       });
     }
+  };
+
+  const toggleKeyboard = () => {
+    setKeyboardVisible((prev) => !prev);
+  }
+
+  const handleCloseKeyboard = () => {
+    toggleKeyboard();
   };
 
   const tabKeys = Object.keys(TabParamListValues).slice(1);
@@ -161,6 +180,15 @@ const IndexScreen = () => {
           </TouchableOpacity>
         ))}
       </ScrollView>
+      
+      {/* Keyboard */}
+      <TouchableOpacity style={styles.keyboardButton} onPress={toggleKeyboard}>
+        <Text style={styles.keyboardButtonText}>⌨️ Keyboard</Text>
+      </TouchableOpacity>
+
+      {isKeyboardVisible && (
+        <OnScreenKeyboard onKeyPress={handleKeyPress} onClose={handleCloseKeyboard} />
+      )}
     </View>
   );
 };
@@ -261,6 +289,19 @@ const styles = StyleSheet.create({
   iconText: {
     fontSize: 12,
     color: "#333",
+  },
+  keyboardButton: {
+    position: "absolute",
+    bottom: 20,
+    left: 20,
+    padding: 10,
+    backgroundColor: "#555",
+    borderRadius: 5,
+  },
+  keyboardButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    padding: 5,
   },
 });
 

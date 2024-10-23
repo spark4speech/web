@@ -18,6 +18,7 @@ import { foods } from "@/constants/assets/food";
 import { icons } from "@/constants/assets/categoryIcons";
 import { SentenceContext } from "@/contexts/SentenceContext";
 import { useSettings } from "@/contexts/SettingsContext";
+import OnScreenKeyboard from "@/components/OnScreenKeyboard";
 
 // Updated FoodScreen component
 const FoodScreen = () => {
@@ -25,6 +26,7 @@ const FoodScreen = () => {
 
   const { sentence, setSentence } = useContext(SentenceContext);
   const { volume, voiceSpeed, voicePitch } = useSettings();
+  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
   const handlePress = (destination: string) => {
     setSentence(sentence ? `${sentence} ${destination as string}` : destination as string);
@@ -32,10 +34,19 @@ const FoodScreen = () => {
     Speech.speak(destination, { rate: voiceSpeed, pitch: voicePitch, volume });
   };
 
+  const handleKeyPress = (key: string) => {
+    setSentence(sentence ? `${sentence}${key}` : key);
+    Speech.speak(key.toLowerCase(), { rate: voiceSpeed, pitch: voicePitch, volume });
+  };
+
   const handleBackspace = () => {
-    const words = sentence.trim().split(" ");
-    words.pop();
-    setSentence(words.join(" "));
+    if (isKeyboardVisible) {
+      setSentence(sentence.substring(0, sentence.length - 1));
+      } else {
+      const words = sentence.trim().split(" ");
+      words.pop();
+      setSentence(words.join(" "));
+    }
   };
   
   const handleClear = () => {
@@ -48,6 +59,14 @@ const FoodScreen = () => {
         rate: 0.7,
       });
     }
+  };
+
+  const toggleKeyboard = () => {
+    setKeyboardVisible((prev) => !prev);
+  }
+
+  const handleCloseKeyboard = () => {
+    toggleKeyboard();
   };
 
   return (
@@ -156,6 +175,15 @@ const FoodScreen = () => {
           );
         })}
       </ScrollView>
+
+      {/* Keyboard */}
+      <TouchableOpacity style={styles.keyboardButton} onPress={toggleKeyboard}>
+        <Text style={styles.keyboardButtonText}>⌨️ Keyboard</Text>
+      </TouchableOpacity>
+
+      {isKeyboardVisible && (
+        <OnScreenKeyboard onKeyPress={handleKeyPress} onClose={handleCloseKeyboard} />
+      )}
     </View>
   );
 };
@@ -269,6 +297,19 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#333",
     alignSelf: "center",
+  },
+  keyboardButton: {
+    position: "absolute",
+    bottom: 20,
+    left: 20,
+    padding: 10,
+    backgroundColor: "#555",
+    borderRadius: 5,
+  },
+  keyboardButtonText: {
+    color: "#fff",
+    fontSize: 16,
+    padding: 5,
   },
 });
 
