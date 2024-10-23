@@ -44,6 +44,22 @@ export const singleButtonIcons: { name: string; image: string }[] = [
     image: require("@/assets/imgs/general/or.png"),
   },
   {
+    name: "But",
+    image: require("@/assets/imgs/general/but.png"),
+  },
+  {
+    name: "Because",
+    image: require("@/assets/imgs/general/because.png"),
+  },
+  {
+    name: "To",
+    image: require("@/assets/imgs/general/to.png"),
+  },
+  {
+    name: "So",
+    image: require("@/assets/imgs/general/so.png"),
+  },
+  {
     name: "A",
     image: require("@/assets/imgs/general/a.png"),
   },
@@ -53,7 +69,7 @@ export const singleButtonIcons: { name: string; image: string }[] = [
   },
   {
     name: "The",
-    image: require("@/assets/imgs/general/sorry.png"),
+    image: require("@/assets/imgs/general/the.png"),
   },
   {
     name: "Sorry",
@@ -167,5 +183,20 @@ export const singleButtonIcons: { name: string; image: string }[] = [
     name: "Dislike",
     image: require("@/assets/imgs/general/dislike.png"),
   },
-
+  {
+    name: "What",
+    image: require("@/assets/imgs/general/what.png"),
+  },
+  {
+    name: "Why",
+    image: require("@/assets/imgs/general/why.png"),
+  },
+  {
+    name: "Where",
+    image: require("@/assets/imgs/general/where.png"),
+  },
+  {
+    name: "Who",
+    image: require("@/assets/imgs/general/who.png"),
+  },
 ];
