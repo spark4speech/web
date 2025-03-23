@@ -1,7 +1,7 @@
 export const actions = [
   {
     name: "Am",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/am.png"),
   },
   {
     name: "Is",
@@ -65,7 +65,7 @@ export const actions = [
   },
   {
     name: "Have",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/have.png"),
   },
   {
     name: "Do",
@@ -77,15 +77,15 @@ export const actions = [
   },
   {
     name: "Make",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/make.png"),
   },
   {
     name: "Know",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/know.png"),
   },
   {
     name: "Take",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/take.png"),
   },
   {
     name: "Come",
@@ -93,11 +93,11 @@ export const actions = [
   },
   {
     name: "Look",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/look.png"),
   },
   {
     name: "Want",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/want.png"),
   },
   {
     name: "Give",
@@ -113,15 +113,15 @@ export const actions = [
   },
   {
     name: "Tell",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/tell.png"),
   },
   {
     name: "Ask",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/ask.png"),
   },
   {
     name: "Work",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/work2.png"),
   },
   {
     name: "Seem",
@@ -129,7 +129,7 @@ export const actions = [
   },
   {
     name: "Feel",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/feel.png"),
   },
   {
     name: "Try",
@@ -137,7 +137,7 @@ export const actions = [
   },
   {
     name: "Leave",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/leave.png"),
   },
   {
     name: "Show",
@@ -145,7 +145,7 @@ export const actions = [
   },
   {
     name: "Call",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/call.png"),
   },
   {
     name: "Keep",
