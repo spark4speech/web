@@ -56,10 +56,6 @@ export const singleButtonIcons: { name: string; image: string }[] = [
     image: require("@/assets/imgs/general/to.png"),
   },
   {
-    name: "So",
-    image: require("@/assets/imgs/general/so.png"),
-  },
-  {
     name: "Am",
     image: require("@/assets/imgs/general/am.png"),
   },
@@ -198,5 +194,9 @@ export const singleButtonIcons: { name: string; image: string }[] = [
   {
     name: "Why",
     image: require("@/assets/imgs/general/why.png"),
+  },
+  {
+    name: "Who",
+    image: require("@/assets/imgs/general/who.png"),
   },
 ];

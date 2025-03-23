@@ -44,7 +44,7 @@ export const water = [
     url: require("@/assets/imgs/animals/ocean-water/shark.png"),
   },
   {
-    name: "SHrimp",
+    name: "Shrimp",
     url: require("@/assets/imgs/animals/ocean-water/shrimp.png"),
   },
   {

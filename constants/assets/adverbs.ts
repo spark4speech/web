@@ -12,6 +12,10 @@ export const adverbs = [
     url: require("@/assets/imgs/adjectives/important.png"),
   },
   {
+    name: "So", 
+    url: require("@/assets/imgs/adverbs/so.png"),
+  },
+  {
     name: "Just", 
     url: require("@/assets/imgs/adjectives/important.png"),
   },

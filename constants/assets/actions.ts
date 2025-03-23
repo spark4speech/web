@@ -5,7 +5,7 @@ export const actions = [
   },
   {
     name: "Is",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/is.png"),
   },
   {
     name: "Are",
@@ -60,10 +60,6 @@ export const actions = [
     url: require("@/assets/imgs/adjectives/important.png"),
   },
   {
-    name: "Be",
-    url: require("@/assets/imgs/adjectives/important.png"),
-  },
-  {
     name: "Have",
     url: require("@/assets/imgs/actions/have.png"),
   },
@@ -73,7 +69,7 @@ export const actions = [
   },
   {
     name: "Get",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/get.png"),
   },
   {
     name: "Make",
@@ -89,7 +85,7 @@ export const actions = [
   },
   {
     name: "Come",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/come.png"),
   },
   {
     name: "Look",
@@ -101,7 +97,7 @@ export const actions = [
   },
   {
     name: "Give",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/give.png"),
   },
   {
     name: "Use",
@@ -109,7 +105,7 @@ export const actions = [
   },
   {
     name: "Find",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/find.png"),
   },
   {
     name: "Tell",
@@ -133,7 +129,7 @@ export const actions = [
   },
   {
     name: "Try",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/try.png"),
   },
   {
     name: "Leave",
@@ -141,7 +137,7 @@ export const actions = [
   },
   {
     name: "Show",
-    url: require("@/assets/imgs/adjectives/important.png"),
+    url: require("@/assets/imgs/actions/show.png"),
   },
   {
     name: "Call",
