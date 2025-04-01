@@ -16,6 +16,7 @@ import { singleButtonIcons } from "@/constants/singleButtonIcons";
 import { SentenceContext } from "@/contexts/SentenceContext";
 import { useSettings } from "@/contexts/SettingsContext";
 import OnScreenKeyboard from "@/components/OnScreenKeyboard";
+import TestPredictionScreen from "@/components/TestPredictions";
 
 const DEFAULT_ICON = "https://cloud-nhes44ias-hack-club-bot.vercel.app/0qm.jpg";
 
@@ -73,6 +74,10 @@ const IndexScreen = () => {
     toggleKeyboard();
   };
 
+  const handleTestPredictions = () => {
+    navigation.navigate("Prediction");
+  }
+
   const tabKeys = Object.keys(TabParamListValues).slice(1);
   const defaultItemsCount = 72 - tabKeys.length - singleButtonIcons.length;
 
@@ -118,7 +123,7 @@ const IndexScreen = () => {
           <Text style={styles.buttonText}>Settings</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handleSpeakSentence}>
+        <TouchableOpacity onPress={handleTestPredictions}>
           <Image
             source={require("@/assets/images/spark-black-on-orange.png")}
             style={{ width: 160, height: 160, marginBottom: -3 }}
@@ -191,6 +196,10 @@ const IndexScreen = () => {
       )}
     </View>
   );
+
+  // return (
+  //   <TestPredictionScreen />
+  // )
 };
 
 const styles = StyleSheet.create({

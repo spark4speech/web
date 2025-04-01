@@ -42,6 +42,7 @@ import PlacesScreen from "./places";
 import OccupationsScreen from "./occupations";
 import SchoolScreen from "./school";
 import BathroomScreen from "./bathroom";
+import PredictionScreen from "./prediction";
 
 type TabParamList = {
   Home: undefined;
@@ -84,6 +85,7 @@ type TabParamList = {
   Occupations: undefined;
   School: undefined;
   Bathroom: undefined;
+  Prediction: undefined;
 };
 
 type FoodParamList = {
@@ -132,6 +134,7 @@ const TabParamListValues = [
   "Occupations",
   "School",
   "Bathroom",
+  "Prediction",
 ];
 const FoodParamListValues = ["Fruit", "Vegetable", "Breakfast", "Dessert", "Utensils"];
 const AnimalsParamListValues = ["Bird", "Bug", "Farm", "Forest", "Jungle", "Mythological", "Water", "Pet", "Prehistoric", "Reptile", "Other"];
@@ -638,6 +641,19 @@ export default function TabNavigator() {
       <Tab.Screen
         name="Bathroom"
         component={BathroomScreen}
+        options={{
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "happy" : "happy-outline"}
+              color={color}
+            />
+          ),
+          tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Prediction"
+        component={PredictionScreen}
         options={{
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
