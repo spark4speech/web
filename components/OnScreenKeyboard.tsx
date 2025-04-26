@@ -2,10 +2,10 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
 const keys = [
-  ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
-  ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
-  ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', '?',],
-  ['Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', ' '],
+  ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
+  ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
+  ["A", "S", "D", "F", "G", "H", "J", "K", "L", "?"],
+  ["Z", "X", "C", "V", "B", "N", "M", ",", ".", " "],
 ];
 
 type OnScreenKeyboardProps = {
@@ -13,7 +13,10 @@ type OnScreenKeyboardProps = {
   onClose: () => void;
 };
 
-const OnScreenKeyboard: React.FC<OnScreenKeyboardProps> = ({ onKeyPress, onClose }) => {
+const OnScreenKeyboard: React.FC<OnScreenKeyboardProps> = ({
+  onKeyPress,
+  onClose,
+}) => {
   return (
     <View style={styles.keyboardContainer}>
       <TouchableOpacity style={styles.closeButton} onPress={onClose}>
@@ -27,11 +30,11 @@ const OnScreenKeyboard: React.FC<OnScreenKeyboardProps> = ({ onKeyPress, onClose
               style={styles.key}
               onPress={() => onKeyPress(key)}
             >
-                {key === ' ' ? (
+              {key === " " ? (
                 <Text style={styles.keyText}>⎵</Text>
-                ) : (
+              ) : (
                 <Text style={styles.keyText}>{key}</Text>
-                )}
+              )}
             </TouchableOpacity>
           ))}
         </View>
@@ -42,8 +45,8 @@ const OnScreenKeyboard: React.FC<OnScreenKeyboardProps> = ({ onKeyPress, onClose
 
 const styles = StyleSheet.create({
   keyboardContainer: {
-    width: '100%',
-    backgroundColor: '#333',
+    width: "100%",
+    backgroundColor: "#333",
     padding: 10,
   },
   closeButton: {
