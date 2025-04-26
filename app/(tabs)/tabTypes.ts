@@ -39,7 +39,6 @@ export type TabParamList = {
   Occupations: undefined;
   School: undefined;
   Bathroom: undefined;
-  Prediction: undefined;
 };
 
 export const TabParamListValues = [
@@ -66,7 +65,6 @@ export const TabParamListValues = [
   "Occupations",
   "School",
   "Bathroom",
-  "Prediction",
 ];
 
 export const FoodParamListValues = ["Fruit", "Vegetable", "Breakfast", "Dessert", "Utensils"];

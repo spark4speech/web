@@ -16,7 +16,7 @@ import { singleButtonIcons } from "@/constants/singleButtonIcons";
 import { SentenceContext } from "@/contexts/SentenceContext";
 import { useSettings } from "@/contexts/SettingsContext";
 import OnScreenKeyboard from "@/components/OnScreenKeyboard";
-import TestPredictionScreen from "@/components/TestPredictions";
+import { useWordPrediction } from "@/hooks/useWordPrediction";
 
 const DEFAULT_ICON = "https://cloud-nhes44ias-hack-club-bot.vercel.app/0qm.jpg";
 
@@ -26,6 +26,17 @@ const IndexScreen = () => {
   const { sentence, setSentence } = useContext(SentenceContext);
   const { volume, voiceSpeed, voicePitch } = useSettings();
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const predictions = useWordPrediction(sentence);
+
+  const handlePredictionSelect = (word: string) => {
+    const newSentence = sentence.trim() + " " + word;
+    setSentence(newSentence);
+    Speech.speak(word.toLowerCase(), {
+      rate: voiceSpeed,
+      pitch: voicePitch,
+      volume,
+    });
+  };
 
   const handlePress = (
     destination: keyof TabParamList | string,
@@ -86,11 +97,6 @@ const IndexScreen = () => {
     toggleKeyboard();
   };
 
-  const handleTestPredictions = () => {
-    // navigation.navigate("Prediction");
-    handleSpeakSentence();
-  };
-
   const tabKeys = Object.keys(TabParamListValues).slice(1);
   const defaultItemsCount = 72 - tabKeys.length - singleButtonIcons.length;
 
@@ -133,7 +139,7 @@ const IndexScreen = () => {
           <Text style={styles.buttonText}>Settings</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={handleTestPredictions}>
+        <TouchableOpacity onPress={handleSpeakSentence}>
           <Image
             source={require("@/assets/images/spark-black-on-orange.png")}
             style={{ width: 160, height: 160, marginBottom: -3 }}
@@ -147,6 +153,21 @@ const IndexScreen = () => {
           <Text style={styles.buttonText}>Home</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Prediction Model */}
+      {predictions.length > 0 && (
+        <View style={styles.predictionContainer}>
+          {predictions.map((word, idx) => (
+            <TouchableOpacity
+              key={idx}
+              style={styles.predictionButton}
+              onPress={() => handlePredictionSelect(word)}
+            >
+              <Text style={styles.predictionText}>{word}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+      )}
 
       {/* Grid of Icons */}
       <ScrollView contentContainerStyle={styles.gridContainer}>
@@ -218,10 +239,6 @@ const IndexScreen = () => {
       )}
     </View>
   );
-
-  // return (
-  //   <TestPredictionScreen />
-  // )
 };
 
 const styles = StyleSheet.create({
@@ -333,6 +350,26 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     padding: 5,
+  },
+  predictionContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#ffe9d6",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    gap: 10,
+  },
+  predictionButton: {
+    backgroundColor: "#ff914d",
+    paddingHorizontal: 15,
+    paddingVertical: 8,
+    borderRadius: 20,
+  },
+  predictionText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
 

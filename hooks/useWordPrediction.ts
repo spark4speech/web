@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import modelData from "../assets/word-prediction/en_US.clean.trigrams.min.json";
 
 interface Model {
@@ -7,23 +7,29 @@ interface Model {
 
 const model: Model = modelData as Model;
 
-export function useWordPrediction() {
+export function useWordPrediction(input: string) {
   const [predictions, setPredictions] = useState<string[]>([]);
 
-  const predictNextWords = (input: string, topN: number = 5) => {
+  useEffect(() => {
     const words = input.trim().toLowerCase().split(" ");
-    if (words.length < 2) return setPredictions([]);
+    if (words.length < 2) {
+      setPredictions([]);
+      return;
+    }
 
     const context = `${words[words.length - 2]} ${words[words.length - 1]}`;
-    const predictionData = model[context] ?? {};
+    const options = model[context];
 
-    const sortedPredictions = Object.entries(predictionData)
-      .sort(([, countA], [, countB]) => countB - countA)
-      .slice(0, topN)
-      .map(([word]) => word);
+    if (options) {
+      const sorted = Object.entries(options)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3)
+        .map(([word]) => word);
+      setPredictions(sorted);
+    } else {
+      setPredictions([]);
+    }
+  }, [input]);
 
-    setPredictions(sortedPredictions);
-  }
-
-  return { predictions, predictNextWords };
+  return predictions;
 }
