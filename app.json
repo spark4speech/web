@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "spark",
+    "name": "SPARK: Speech Personalized Access Resource Kit",
     "slug": "spark",
     "version": "1.0.0",
     "orientation": "landscape",
@@ -10,7 +10,7 @@
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#211f17"
     },
     "ios": {
       "supportsTablet": true

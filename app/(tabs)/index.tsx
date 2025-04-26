@@ -8,7 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 import { useNavigation, NavigationProp } from "@react-navigation/native";
-import { TabParamList, TabParamListValues } from "@/app/(tabs)/_layout";
+import { TabParamList, TabParamListValues } from "./tabTypes";
 import { Alert, Modal, Pressable } from "react-native";
 import * as Speech from "expo-speech";
 import { icons } from "@/constants/assets/categoryIcons";
@@ -34,26 +34,38 @@ const IndexScreen = () => {
     if (!isButton) {
       navigation.navigate(destination as keyof TabParamList | any);
     } else {
-      setSentence(sentence ? `${sentence} ${destination as string}` : destination as string);
-      Speech.speak(destination.toLowerCase() as string, { rate: voiceSpeed, pitch: voicePitch, volume });
+      setSentence(
+        sentence
+          ? `${sentence} ${destination as string}`
+          : (destination as string)
+      );
+      Speech.speak(destination.toLowerCase() as string, {
+        rate: voiceSpeed,
+        pitch: voicePitch,
+        volume,
+      });
     }
   };
-  
+
   const handleKeyPress = (key: string) => {
     setSentence(sentence ? `${sentence}${key}` : key);
-    Speech.speak(key.toLowerCase(), { rate: voiceSpeed, pitch: voicePitch, volume });
+    Speech.speak(key.toLowerCase(), {
+      rate: voiceSpeed,
+      pitch: voicePitch,
+      volume,
+    });
   };
 
   const handleBackspace = () => {
     if (isKeyboardVisible) {
       setSentence(sentence.substring(0, sentence.length - 1));
-      } else {
+    } else {
       const words = sentence.trim().split(" ");
       words.pop();
       setSentence(words.join(" "));
     }
   };
-  
+
   const handleClear = () => {
     setSentence("");
   };
@@ -68,15 +80,16 @@ const IndexScreen = () => {
 
   const toggleKeyboard = () => {
     setKeyboardVisible((prev) => !prev);
-  }
+  };
 
   const handleCloseKeyboard = () => {
     toggleKeyboard();
   };
 
   const handleTestPredictions = () => {
-    navigation.navigate("Prediction");
-  }
+    // navigation.navigate("Prediction");
+    handleSpeakSentence();
+  };
 
   const tabKeys = Object.keys(TabParamListValues).slice(1);
   const defaultItemsCount = 72 - tabKeys.length - singleButtonIcons.length;
@@ -96,12 +109,9 @@ const IndexScreen = () => {
         >
           <Text style={styles.backspaceText}>⌫</Text>
         </TouchableOpacity>
-        
+
         {/* Clear Button */}
-        <TouchableOpacity
-          style={styles.clearButton}
-          onPress={handleClear}
-        >
+        <TouchableOpacity style={styles.clearButton} onPress={handleClear}>
           <Image
             source={{
               uri: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Trash_font_awesome.svg/1024px-Trash_font_awesome.svg.png",
@@ -141,25 +151,31 @@ const IndexScreen = () => {
       {/* Grid of Icons */}
       <ScrollView contentContainerStyle={styles.gridContainer}>
         {/* Tab icons */}
-        {tabKeys.map((key) => (
-          <TouchableOpacity
-            key={key}
-            style={styles.gridItem}
-            onPress={() =>
-              handlePress(
-                TabParamListValues[Number(key) as number] as keyof TabParamList
-              )
-            }
-          >
-            <Image
-              source={icons[TabParamListValues[Number(key) as number]]}
-              style={styles.icon}
-            />
-            <Text style={styles.iconText}>
-              {TabParamListValues[Number(key) as number]}
-            </Text>
-          </TouchableOpacity>
-        ))}
+        {tabKeys
+          .filter(
+            (key) => TabParamListValues[Number(key) as number] !== "Prediction"
+          )
+          .map((key) => (
+            <TouchableOpacity
+              key={key}
+              style={styles.gridItem}
+              onPress={() =>
+                handlePress(
+                  TabParamListValues[
+                    Number(key) as number
+                  ] as keyof TabParamList
+                )
+              }
+            >
+              <Image
+                source={icons[TabParamListValues[Number(key) as number]]}
+                style={styles.icon}
+              />
+              <Text style={styles.iconText}>
+                {TabParamListValues[Number(key) as number]}
+              </Text>
+            </TouchableOpacity>
+          ))}
 
         {/* Single buttons */}
         {singleButtonIcons.map((button, index) => (
@@ -168,7 +184,10 @@ const IndexScreen = () => {
             style={styles.gridItem}
             onPress={() => handlePress(button.name, true)}
           >
-            <Image source={button.image as unknown as undefined} style={styles.icon} />
+            <Image
+              source={button.image as unknown as undefined}
+              style={styles.icon}
+            />
             <Text style={styles.iconText}>{button.name}</Text>
           </TouchableOpacity>
         ))}
@@ -185,14 +204,17 @@ const IndexScreen = () => {
           </TouchableOpacity>
         ))}
       </ScrollView>
-      
+
       {/* Keyboard */}
       <TouchableOpacity style={styles.keyboardButton} onPress={toggleKeyboard}>
         <Text style={styles.keyboardButtonText}>⌨️ Keyboard</Text>
       </TouchableOpacity>
 
       {isKeyboardVisible && (
-        <OnScreenKeyboard onKeyPress={handleKeyPress} onClose={handleCloseKeyboard} />
+        <OnScreenKeyboard
+          onKeyPress={handleKeyPress}
+          onClose={handleCloseKeyboard}
+        />
       )}
     </View>
   );
